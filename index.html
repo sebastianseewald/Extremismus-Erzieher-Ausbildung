@@ -1,0 +1,2793 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Extremismus verstehen &amp; begegnen | Politische Bildung – Ausbildung Erzieher*in (Thüringen)</title>
+  <!-- Tailwind CSS via CDN für modernes, responsives Bildungs-Design -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Inter Font mit sauberem System-Font-Fallback -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <script>
+    /* Tailwind-Konfiguration für konsistente Bildungs-Farbpalette */
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          },
+          colors: {
+            petrol: {
+              50: '#eff8f9',
+              100: '#d7edf1',
+              200: '#b3dce4',
+              300: '#7fc2d0',
+              400: '#45a0b5',
+              500: '#29839a',
+              600: '#21697f',
+              700: '#1b5568',
+              800: '#164656',
+              900: '#0f3847',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Grundlegende Styles, Barrierefreiheit & Übergänge */
+    :root {
+      --petrol-primary: #0f4c5c;
+      --petrol-dark: #0a3642;
+      --bg-surface: #f8fafc;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-surface);
+      color: #0f172a;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Barrierearme Tastatur-Fokus-Indikatoren */
+    *:focus-visible {
+      outline: 3px solid #0f4c5c;
+      outline-offset: 2px;
+    }
+
+    /* Sanfte Einblend-Animation für Modulwechsel und Inhalte */
+    @keyframes fadeInSlide {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in {
+      animation: fadeInSlide 0.28s ease-out forwards;
+    }
+
+    /* Versteckt horizontale Scrollbar bei mobiler Tab-Leiste, bleibt aber scrollbar */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Nur in der Druckansicht sichtbare Elemente */
+    .print-only {
+      display: none;
+    }
+
+    /* ==========================================================
+       PRINT-CSS: Saubere Lernzusammenfassung für Ausdruck / PDF
+       ========================================================== */
+    @media print {
+      @page {
+        margin: 1.5cm;
+        size: A4 portrait;
+      }
+
+      body {
+        background: #ffffff !important;
+        color: #0f172a !important;
+        font-size: 10.5pt !important;
+        line-height: 1.45 !important;
+      }
+
+      .no-print,
+      header nav,
+      #module-nav-wrapper,
+      #toast-container,
+      #reset-modal,
+      .module-footer-nav,
+      .interactive-controls-only {
+        display: none !important;
+      }
+
+      .print-only {
+        display: block !important;
+      }
+
+      /* Im Druck alle Hauptmodule als strukturierte Handout-Zusammenfassung anzeigen */
+      .module-panel {
+        display: block !important;
+        opacity: 1 !important;
+        transform: none !important;
+        margin-bottom: 24px !important;
+        page-break-inside: auto;
+      }
+
+      .print-break-before {
+        page-break-before: always;
+      }
+
+      .print-avoid-break {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      /* Alle Tab-Inhalte der 3 Phänomenbereiche beim Drucken sichtbar machen */
+      .phenomenon-panel {
+        display: block !important;
+        margin-bottom: 14px !important;
+        border: 1px solid #cbd5e1 !important;
+        padding: 12px !important;
+      }
+
+      /* Karten und Schatten für sauberen Druck vereinfachen */
+      .shadow-sm, .shadow, .shadow-md, .shadow-lg {
+        box-shadow: none !important;
+      }
+
+      header {
+        position: static !important;
+        border-bottom: 2px solid #0f4c5c !important;
+        margin-bottom: 16px !important;
+      }
+
+      a[href]::after {
+        content: "";
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-slate-50 text-slate-900">
+
+  <!-- Skip-Link für Screenreader und Tastaturnavigation -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 bg-petrol-900 text-white px-4 py-2 rounded-lg font-medium shadow-lg">
+    Direkt zum Lerninhalt springen
+  </a>
+
+  <!-- =================================================================
+       FESTE TOP-NAVIGATION & KOMPAKTER HEADER MIT FORTSCHRITTSANZEIGE
+       ================================================================= -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Obere Zeile: Titel, Zielgruppe, Fortschritt, Aktionen -->
+      <div class="py-3 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+        <!-- Logo & Fachbezug -->
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-xl bg-petrol-900 text-white flex items-center justify-center shrink-0 shadow-sm" aria-hidden="true">
+            <!-- Inline SVG: Schild mit Waage / Demokratie-Symbol -->
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3l7.5 3v6c0 4.97-3.2 8.75-7.5 10-4.3-1.25-7.5-5.03-7.5-10V6L12 3z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4" />
+            </svg>
+          </div>
+          <div>
+            <div class="flex flex-wrap items-center gap-2">
+              <h1 class="text-base sm:text-lg font-bold text-slate-900 tracking-tight leading-tight">
+                Extremismus verstehen &amp; pädagogisch begegnen
+              </h1>
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-petrol-100 text-petrol-900">
+                Thüringen
+              </span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 font-medium">
+              Politische Bildung | Ausbildung Erzieher*in (Berufsfachschule / Fachschule für Sozialpädagogik)
+            </p>
+          </div>
+        </div>
+
+        <!-- Fortschrittsanzeige & Steuer-Buttons -->
+        <div class="flex flex-wrap items-center justify-between lg:justify-end gap-3 no-print">
+          <!-- Fortschrittskompaktanzeige -->
+          <div class="flex items-center gap-3 bg-slate-100/90 border border-slate-200 rounded-xl px-3 py-1.5" aria-live="polite">
+            <div class="min-w-[115px] sm:min-w-[140px]">
+              <div class="flex items-center justify-between text-xs font-semibold text-slate-700 mb-1">
+                <span>Lernfortschritt</span>
+                <span id="header-progress-percent" class="text-petrol-800">0 %</span>
+              </div>
+              <div class="w-full h-2 bg-slate-200 rounded-full overflow-hidden">
+                <div id="header-progress-bar" class="h-full bg-petrol-700 rounded-full transition-all duration-500" style="width: 0%;"></div>
+              </div>
+            </div>
+            <div class="hidden sm:flex items-center gap-2 text-xs text-slate-600 border-l border-slate-300 pl-3">
+              <span title="Bearbeitete Module" class="inline-flex items-center gap-1">
+                <strong id="stat-modules" class="text-slate-900">0/6</strong> Module
+              </span>
+              <span aria-hidden="true">·</span>
+              <span title="Gelöste Praxisfälle" class="inline-flex items-center gap-1">
+                <strong id="stat-cases" class="text-slate-900">0/4</strong> Fälle
+              </span>
+              <span aria-hidden="true">·</span>
+              <span title="Punkte im Wissenscheck" class="inline-flex items-center gap-1">
+                <strong id="stat-quiz" class="text-slate-900">0/17</strong> Punkte
+              </span>
+            </div>
+          </div>
+
+          <!-- Aktionsbuttons: Drucken & Zurücksetzen -->
+          <div class="flex items-center gap-2">
+            <button type="button" id="btn-print" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-petrol-900 hover:bg-petrol-800 text-white transition shadow-sm min-h-[40px]" title="Lernzusammenfassung drucken oder als PDF speichern">
+              <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 9V4h12v5M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v6H6v-6z" />
+              </svg>
+              <span class="hidden sm:inline">Lernzusammenfassung drucken</span>
+              <span class="sm:hidden">Drucken</span>
+            </button>
+
+            <button type="button" id="btn-open-reset" class="inline-flex items-center justify-center p-2 rounded-xl text-slate-500 hover:text-slate-800 hover:bg-slate-100 border border-slate-200 transition min-h-[40px] min-w-[40px]" title="Lernfortschritt zurücksetzen" aria-label="Lernfortschritt zurücksetzen">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h5M20 20v-5h-5M5.64 18.36A9 9 0 0019.9 14.5M18.36 5.64A9 9 0 004.1 9.5" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modul-Navigation (6 Tabs, horizontal scrollbar auf Mobilgeräten) -->
+      <div id="module-nav-wrapper" class="border-t border-slate-100 py-2 no-print">
+        <nav aria-label="Lernmodule" role="tablist" class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-0.5">
+          <button type="button" role="tab" id="tab-mod-1" aria-selected="true" aria-controls="panel-mod-1" data-module="1"
+            class="module-tab shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition min-h-[42px] bg-petrol-900 text-white shadow-sm">
+            <span class="tab-num w-5 h-5 rounded-full bg-white/20 text-white flex items-center justify-center text-xs font-bold">1</span>
+            <span>Grundlagen &amp; FDGO</span>
+          </button>
+
+          <button type="button" role="tab" id="tab-mod-2" aria-selected="false" aria-controls="panel-mod-2" data-module="2"
+            class="module-tab shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition min-h-[42px] text-slate-700 hover:bg-slate-100">
+            <span class="tab-num w-5 h-5 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center text-xs font-bold">2</span>
+            <span>3 Phänomenbereiche</span>
+          </button>
+
+          <button type="button" role="tab" id="tab-mod-3" aria-selected="false" aria-controls="panel-mod-3" data-module="3"
+            class="module-tab shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition min-h-[42px] text-slate-700 hover:bg-slate-100">
+            <span class="tab-num w-5 h-5 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center text-xs font-bold">3</span>
+            <span>Radikalisierung</span>
+          </button>
+
+          <button type="button" role="tab" id="tab-mod-4" aria-selected="false" aria-controls="panel-mod-4" data-module="4"
+            class="module-tab shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition min-h-[42px] text-slate-700 hover:bg-slate-100">
+            <span class="tab-num w-5 h-5 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center text-xs font-bold">4</span>
+            <span>Praxis-Simulator</span>
+          </button>
+
+          <button type="button" role="tab" id="tab-mod-5" aria-selected="false" aria-controls="panel-mod-5" data-module="5"
+            class="module-tab shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition min-h-[42px] text-slate-700 hover:bg-slate-100">
+            <span class="tab-num w-5 h-5 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center text-xs font-bold">5</span>
+            <span>Wissenscheck</span>
+          </button>
+
+          <button type="button" role="tab" id="tab-mod-6" aria-selected="false" aria-controls="panel-mod-6" data-module="6"
+            class="module-tab shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition min-h-[42px] text-slate-700 hover:bg-slate-100">
+            <span class="tab-num w-5 h-5 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center text-xs font-bold">6</span>
+            <span>Hilfe &amp; Netzwerk Thüringen</span>
+          </button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Druck-Zusammenfassungskopf (nur im Ausdruck sichtbar) -->
+  <div class="print-only max-w-5xl mx-auto px-6 pt-4 pb-2 border-b border-slate-300">
+    <p class="text-sm text-slate-700">
+      <strong>Handout / Lernzusammenfassung:</strong> Extremismus (Rechtsextremismus, Linksextremismus, Islamismus) – Fach Politische Bildung, Ausbildung Erzieher*in in Thüringen.
+      Aktueller Lernstand: <span id="print-summary-stats">0 % abgeschlossen</span>.
+    </p>
+  </div>
+
+  <!-- =================================================================
+       HAUPTINHALT: 6 INTERAKTIVE LERNMODULE
+       ================================================================= -->
+  <main id="main-content" class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+
+    <!-- ===============================================================
+         MODUL 1: GRUNDLAGEN & FDGO
+         =============================================================== -->
+    <section id="panel-mod-1" role="tabpanel" aria-labelledby="tab-mod-1" class="module-panel animate-fade-in space-y-8">
+      <!-- Modul-Kopfbereich -->
+      <div class="bg-gradient-to-br from-petrol-900 via-petrol-800 to-slate-800 text-white rounded-2xl p-6 sm:p-8 shadow-md">
+        <div class="flex flex-wrap items-center gap-2 mb-3">
+          <span class="px-3 py-1 rounded-full bg-white/15 text-xs font-semibold uppercase tracking-wider">Modul 1 von 6</span>
+          <span class="px-3 py-1 rounded-full bg-emerald-400/20 text-emerald-100 text-xs font-semibold">Demokratie &amp; Verfassung</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3">
+          Grundlagen &amp; Freiheitlich-demokratische Grundordnung (FDGO)
+        </h2>
+        <p class="text-petrol-100 text-sm sm:text-base max-w-3xl leading-relaxed">
+          Wer Kinder und Jugendliche auf dem Weg zu selbstbestimmten, demokratischen Persönlichkeiten begleitet, braucht einen klaren Kompass: Was schützt unsere Verfassung, wo beginnt Extremismus – und welche Haltung verlangen Berufsethos und Beutelsbacher Konsens?
+        </p>
+      </div>
+
+      <!-- 1.1 Die drei Kernpfeiler der FDGO -->
+      <div class="space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <h3 class="text-xl font-bold text-slate-900">1.1 Was schützt die FDGO?</h3>
+            <p class="text-sm text-slate-600">
+              Das Bundesverfassungsgericht definiert die <strong>Freiheitlich-demokratische Grundordnung</strong> über drei unantastbare Kernprinzipien. Klicken Sie auf die Karten für den Bezug zur sozialpädagogischen Praxis.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- Pfeiler 1 -->
+          <article class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 flex flex-col justify-between hover:border-petrol-400 transition print-avoid-break">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="w-10 h-10 rounded-xl bg-petrol-100 text-petrol-900 flex items-center justify-center">
+                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197" />
+                  </svg>
+                </span>
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-slate-100 text-slate-700">Art. 1 GG</span>
+              </div>
+              <h4 class="text-lg font-bold text-slate-900 mb-2">Menschenwürde</h4>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                Jeder Mensch besitzt den gleichen Wert – unabhängig von Herkunft, Hautfarbe, Religion, Geschlecht, Behinderung oder Weltanschauung. Menschen dürfen niemals zum bloßen Objekt erniedrigt werden.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-slate-100">
+              <button type="button" class="fdgo-toggle w-full flex items-center justify-between text-xs font-semibold text-petrol-800 hover:text-petrol-900 py-1 no-print" aria-expanded="true">
+                <span>Bedeutung für Kita, Hort &amp; Jugendhilfe</span>
+                <svg class="w-4 h-4 transition-transform rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+              </button>
+              <div class="fdgo-detail mt-2 text-xs text-slate-700 bg-petrol-50/70 rounded-xl p-3 leading-relaxed">
+                <strong>Praxisbezug:</strong> Jedes Kind hat ein Recht auf Schutz vor Ausgrenzung, Rassismus und Abwertung. Pädagogische Einrichtungen sind sichere Orte für Vielfalt.
+              </div>
+            </div>
+          </article>
+
+          <!-- Pfeiler 2 -->
+          <article class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 flex flex-col justify-between hover:border-petrol-400 transition print-avoid-break">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="w-10 h-10 rounded-xl bg-petrol-100 text-petrol-900 flex items-center justify-center">
+                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </span>
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-slate-100 text-slate-700">Art. 20 GG</span>
+              </div>
+              <h4 class="text-lg font-bold text-slate-900 mb-2">Demokratieprinzip</h4>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                Alle Staatsgewalt geht vom Volk aus. Freie, gleiche und geheime Wahlen, Mehrparteiensystem, Opposition, Meinungsfreiheit sowie Minderheitenschutz sichern friedliche Machtwechsel.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-slate-100">
+              <button type="button" class="fdgo-toggle w-full flex items-center justify-between text-xs font-semibold text-petrol-800 hover:text-petrol-900 py-1 no-print" aria-expanded="false">
+                <span>Bedeutung für Kita, Hort &amp; Jugendhilfe</span>
+                <svg class="w-4 h-4 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+              </button>
+              <div class="fdgo-detail hidden print:block mt-2 text-xs text-slate-700 bg-petrol-50/70 rounded-xl p-3 leading-relaxed">
+                <strong>Praxisbezug:</strong> Kinder- und Jugendparlamente, Morgenkreise und Mitbestimmung (Partizipation) machen früh erlebbar, dass Konflikte durch Aushandlung statt Macht gelöst werden.
+              </div>
+            </div>
+          </article>
+
+          <!-- Pfeiler 3 -->
+          <article class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 flex flex-col justify-between hover:border-petrol-400 transition print-avoid-break">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="w-10 h-10 rounded-xl bg-petrol-100 text-petrol-900 flex items-center justify-center">
+                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+                  </svg>
+                </span>
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-slate-100 text-slate-700">Art. 20 Abs. 3 GG</span>
+              </div>
+              <h4 class="text-lg font-bold text-slate-900 mb-2">Rechtsstaatsprinzip</h4>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                Staatliches Handeln ist an Recht und Gesetz gebunden. Gewaltenteilung, unabhängige Gerichte und das staatliche Gewaltmonopol verhindern Willkür und Selbstjustiz.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-slate-100">
+              <button type="button" class="fdgo-toggle w-full flex items-center justify-between text-xs font-semibold text-petrol-800 hover:text-petrol-900 py-1 no-print" aria-expanded="false">
+                <span>Bedeutung für Kita, Hort &amp; Jugendhilfe</span>
+                <svg class="w-4 h-4 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+              </button>
+              <div class="fdgo-detail hidden print:block mt-2 text-xs text-slate-700 bg-petrol-50/70 rounded-xl p-3 leading-relaxed">
+                <strong>Praxisbezug:</strong> Transparente Regeln, Beschwerderechte für Kinder/Jugendliche und klare Grenzen gegen Gewalt vermitteln Verlässlichkeit und Fairness.
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- 1.2 Interaktives Spektrum: Demokratischer Pluralismus vs. Radikalismus vs. Extremismus -->
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-5 print-avoid-break">
+        <div>
+          <h3 class="text-xl font-bold text-slate-900">1.2 Interaktives Spektrum: Pluralismus vs. Radikalismus vs. Extremismus</h3>
+          <p class="text-sm text-slate-600 mt-1">
+            Nicht jede scharfe Kritik an Politik oder Gesellschaft ist extremistisch. Entscheidend ist die <strong>Verfassungsgrenze (FDGO)</strong>. Wählen Sie einen Bereich aus, um die Unterschiede zu erkunden:
+          </p>
+        </div>
+
+        <!-- Visuelle Spektrums-Leiste -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 relative">
+          <button type="button" data-spectrum="pluralismus" class="spectrum-btn text-left p-4 rounded-xl border-2 border-emerald-600 bg-emerald-50/80 transition cursor-pointer">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xs font-bold uppercase tracking-wider text-emerald-800">Innerhalb der FDGO</span>
+              <span class="w-3 h-3 rounded-full bg-emerald-600"></span>
+            </div>
+            <div class="font-bold text-slate-900 text-base">Demokratischer Pluralismus</div>
+            <p class="text-xs text-slate-600 mt-1">Vielfalt, Streitkultur &amp; Kompromiss</p>
+          </button>
+
+          <button type="button" data-spectrum="radikalismus" class="spectrum-btn text-left p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-amber-400 transition cursor-pointer">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xs font-bold uppercase tracking-wider text-amber-800">Zugespitzt, aber in der FDGO</span>
+              <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+            </div>
+            <div class="font-bold text-slate-900 text-base">Radikalismus</div>
+            <p class="text-xs text-slate-600 mt-1">„An die Wurzel gehend“ – grundlegende Kritik</p>
+          </button>
+
+          <button type="button" data-spectrum="extremismus" class="spectrum-btn text-left p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-rose-400 transition cursor-pointer">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xs font-bold uppercase tracking-wider text-rose-800">Außerhalb der FDGO</span>
+              <span class="w-3 h-3 rounded-full bg-rose-600"></span>
+            </div>
+            <div class="font-bold text-slate-900 text-base">Extremismus</div>
+            <p class="text-xs text-slate-600 mt-1">Verfassungsfeindlich &amp; menschenfeindlich</p>
+          </button>
+        </div>
+
+        <!-- Visuelle Grenzlinie -->
+        <div class="hidden md:grid grid-cols-3 gap-3 items-center text-xs font-semibold">
+          <div class="col-span-2 bg-emerald-100/80 text-emerald-900 rounded-lg px-3 py-1.5 text-center border border-emerald-200">
+            ← Geschützt durch das Grundgesetz (Meinungs-, Versammlungs- &amp; Religionsfreiheit) →
+          </div>
+          <div class="bg-rose-100/90 text-rose-900 rounded-lg px-3 py-1.5 text-center border border-rose-300">
+            ✖ Überschreitet die Verfassungsgrenze (FDGO)
+          </div>
+        </div>
+
+        <!-- Dynamische Detail-Ausgabe -->
+        <div id="spectrum-detail" class="rounded-xl border border-emerald-200 bg-emerald-50/40 p-5 transition-all" aria-live="polite">
+          <!-- Wird per JS befüllt & initial gerendert -->
+        </div>
+      </div>
+
+      <!-- 1.3 Praxis-Box: Beutelsbacher Konsens & Demokratiegebot -->
+      <div class="bg-white rounded-2xl border-2 border-teal-200 shadow-sm overflow-hidden print-avoid-break">
+        <div class="bg-teal-50/90 border-b border-teal-200 px-6 py-4 flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-3">
+            <span class="w-9 h-9 rounded-xl bg-teal-700 text-white flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+            </span>
+            <div>
+              <h3 class="text-lg font-bold text-teal-950">Praxis-Box für Erzieher*innen: Beutelsbacher Konsens &amp; Demokratiegebot</h3>
+              <p class="text-xs sm:text-sm text-teal-800">Der fachliche Maßstab (seit 1976) für politische Bildung in Schule, Hort und Jugendarbeit</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-6 space-y-6">
+          <!-- Die 3 Prinzipien -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+              <div class="text-xs font-bold uppercase tracking-wider text-teal-700 mb-1">Prinzip 1</div>
+              <h4 class="font-bold text-slate-900 mb-1.5">Überwältigungsverbot</h4>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                Kinder und Jugendliche dürfen nicht im Sinne erwünschter Meinungen indoktriniert oder „überrumpelt“ werden. Ziel ist ein eigenständiges Urteil.
+              </p>
+            </div>
+
+            <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+              <div class="text-xs font-bold uppercase tracking-wider text-teal-700 mb-1">Prinzip 2</div>
+              <h4 class="font-bold text-slate-900 mb-1.5">Kontroversitätsgebot</h4>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                Was in Wissenschaft und Politik <em>demokratisch</em> kontrovers ist (z. B. Steuerpolitik, Verkehrswende), muss auch im pädagogischen Raum kontrovers dargestellt werden.
+              </p>
+            </div>
+
+            <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+              <div class="text-xs font-bold uppercase tracking-wider text-teal-700 mb-1">Prinzip 3</div>
+              <h4 class="font-bold text-slate-900 mb-1.5">Adressatenorientierung</h4>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                Kinder und Jugendliche sollen befähigt werden, ihre eigenen Interessen und ihre Lebenswelt politisch zu analysieren und selbstwirksam mitzugestalten.
+              </p>
+            </div>
+          </div>
+
+          <!-- Klare Abgrenzung: Neutralitätsmythos -->
+          <div class="rounded-xl bg-amber-50 border border-amber-200 p-5">
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-amber-600 text-white flex items-center justify-center shrink-0 mt-0.5" aria-hidden="true">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+                </svg>
+              </div>
+              <div class="space-y-2">
+                <h4 class="font-bold text-amber-950 text-base">Wichtige Klarstellung: Der „Neutralitäts-Mythos“</h4>
+                <p class="text-sm text-amber-900 leading-relaxed">
+                  In der Praxis wird das Neutralitätsgebot oft missverstanden. Erzieher*innen sind <strong>nicht wertneutral</strong>, sondern dem Grundgesetz, dem SGB VIII (Kinder- und Jugendhilfe) und dem Thüringer Bildungsplan verpflichtet:
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                  <div class="bg-white/80 rounded-lg p-3 border border-amber-200 text-xs sm:text-sm text-slate-800">
+                    <strong class="text-teal-800 block mb-1">✓ Das bedeutet Neutralität:</strong>
+                    Parteipolitische Zurückhaltung im Dienst (keine Wahlwerbung für demokratische Parteien, keine parteiische Vereinnahmung von Kindern/Eltern).
+                  </div>
+                  <div class="bg-white/80 rounded-lg p-3 border border-rose-200 text-xs sm:text-sm text-slate-800">
+                    <strong class="text-rose-800 block mb-1">✖ Das bedeutet Neutralität NICHT:</strong>
+                    Schweigen bei Rassismus, Antisemitismus, Sexismus, Menschenfeindlichkeit oder Gewalt. Menschenwürde (Art. 1 GG) ist <strong>nicht verhandelbar</strong>!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modul-Footer Navigation -->
+      <div class="module-footer-nav flex items-center justify-between pt-4 border-t border-slate-200">
+        <span class="text-xs sm:text-sm text-slate-500">Modul 1 von 6</span>
+        <button type="button" data-next-module="2" class="btn-next-mod inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-petrol-900 hover:bg-petrol-800 text-white font-semibold text-sm shadow-sm transition min-h-[44px]">
+          <span>Modul abschließen &amp; weiter: 3 Phänomenbereiche</span>
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ===============================================================
+         MODUL 2: DIE 3 PHÄNOMENBEREICHE
+         =============================================================== -->
+    <section id="panel-mod-2" role="tabpanel" aria-labelledby="tab-mod-2" class="module-panel hidden animate-fade-in space-y-8 print-break-before">
+      <!-- Modul-Header -->
+      <div class="bg-gradient-to-br from-slate-900 via-petrol-900 to-slate-800 text-white rounded-2xl p-6 sm:p-8 shadow-md">
+        <div class="flex flex-wrap items-center gap-2 mb-3">
+          <span class="px-3 py-1 rounded-full bg-white/15 text-xs font-semibold uppercase tracking-wider">Modul 2 von 6</span>
+          <span class="px-3 py-1 rounded-full bg-amber-400/20 text-amber-100 text-xs font-semibold">Analyse &amp; Abgrenzung</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3">
+          Die drei Phänomenbereiche im Überblick
+        </h2>
+        <p class="text-slate-200 text-sm sm:text-base max-w-3xl leading-relaxed">
+          Rechtsextremismus, Linksextremismus und Islamismus verfolgen unterschiedliche politische Ziele und Feindbilder – teilen jedoch zentrale antidemokratische Denkmuster. Eine fachlich präzise Unterscheidung schützt vor Verharmlosung ebenso wie vor Pauschalisierung.
+        </p>
+      </div>
+
+      <!-- 2.1 Interaktive Tabs für die 3 Phänomenbereiche -->
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <!-- Tab-Buttons -->
+        <div class="border-b border-slate-200 bg-slate-50 p-3 flex flex-wrap gap-2 no-print" role="tablist" aria-label="Phänomenbereiche">
+          <button type="button" role="tab" aria-selected="true" data-phenomenon="rechts"
+            class="phenomenon-tab flex-1 min-w-[160px] px-4 py-3 rounded-xl font-bold text-sm transition flex items-center justify-center gap-2 bg-amber-700 text-white shadow-sm">
+            <span class="w-2.5 h-2.5 rounded-full bg-amber-200"></span>
+            <span>Rechtsextremismus</span>
+          </button>
+
+          <button type="button" role="tab" aria-selected="false" data-phenomenon="links"
+            class="phenomenon-tab flex-1 min-w-[160px] px-4 py-3 rounded-xl font-bold text-sm transition flex items-center justify-center gap-2 bg-white text-slate-700 border border-slate-200 hover:bg-rose-50">
+            <span class="w-2.5 h-2.5 rounded-full bg-rose-600"></span>
+            <span>Linksextremismus</span>
+          </button>
+
+          <button type="button" role="tab" aria-selected="false" data-phenomenon="islamismus"
+            class="phenomenon-tab flex-1 min-w-[160px] px-4 py-3 rounded-xl font-bold text-sm transition flex items-center justify-center gap-2 bg-white text-slate-700 border border-slate-200 hover:bg-indigo-50">
+            <span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span>
+            <span>Islamismus</span>
+          </button>
+        </div>
+
+        <!-- Tab-Inhalte -->
+        <div class="p-6">
+          <!-- A) Rechtsextremismus -->
+          <div id="phenom-rechts" class="phenomenon-panel space-y-5">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-amber-200 pb-3">
+              <h3 class="text-xl font-extrabold text-amber-900">a) Rechtsextremismus</h3>
+              <span class="text-xs font-semibold px-3 py-1 rounded-full bg-amber-100 text-amber-900">Kern: Ideologie der Ungleichwertigkeit</span>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+              <div class="space-y-3">
+                <h4 class="font-bold text-slate-900 text-sm uppercase tracking-wide">Ideologische Kernelemente</h4>
+                <ul class="space-y-2 text-sm text-slate-700">
+                  <li class="flex items-start gap-2">
+                    <span class="text-amber-700 font-bold mt-0.5">•</span>
+                    <span><strong>Ungleichwertigkeit:</strong> Menschen werden nach Herkunft, Ethnie („Volk“), Hautfarbe oder Leistung in „wertvolle“ und „minderwertige“ Gruppen eingeteilt – direkter Verstoß gegen Art. 1 GG.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-amber-700 font-bold mt-0.5">•</span>
+                    <span><strong>Völkischer Nationalismus &amp; Rassismus:</strong> Vorstellung einer ethnisch homogenen „Volksgemeinschaft“; Ausgrenzung von Migrant*innen und Minderheiten („Ethnopluralismus“ / „Remigration“).</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-amber-700 font-bold mt-0.5">•</span>
+                    <span><strong>Antisemitismus &amp; GMF:</strong> Judenfeindschaft (oft getarnt als Verschwörungserzählung) sowie Gruppenbezogene Menschenfeindlichkeit gegen queere Menschen, Menschen mit Behinderung oder Obdachlose.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-amber-700 font-bold mt-0.5">•</span>
+                    <span><strong>Autoritarismus &amp; Geschichtsrevisionismus:</strong> Ruf nach einem „starken Führer“, Verharmlosung oder Relativierung des Nationalsozialismus.</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="space-y-3">
+                <h4 class="font-bold text-slate-900 text-sm uppercase tracking-wide">Praxisbezug: Jugendkultur, Codes &amp; Elternarbeit</h4>
+                <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 space-y-2.5 text-sm text-slate-700">
+                  <p>
+                    <strong>Social Media &amp; TikTok:</strong> Moderne extrem rechte Akteure treten nicht mehr nur als „Springer-Stiefel-Neonazis“ auf, sondern nutzen Memes, Ironie, Fitness-/Kampfsport-Ästhetik, Musik und kurze emotionale Clips, um Jugendliche niedrigschwellig anzusprechen.
+                  </p>
+                  <p>
+                    <strong>Codes &amp; Symbole:</strong> Zahlencodes (z. B. 88, 18, 444), Szenemarken, nordische/völkische Runen, oder scheinbar harmlose „Heimat“- und „Stolz“-Symboliken dienen als Erkennungszeichen.
+                  </p>
+                  <p>
+                    <strong>Völkische Erziehung &amp; Elternarbeit (relevant in Thüringen):</strong> In Kitas und Schulen treten vereinzelt Eltern auf, die völkische Geschlechterrollen, Ablehnung inklusiver/interkultureller Angebote oder rassistische Abwertungen einbringen. Hier greift der klare Schutzauftrag für alle Kinder.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- B) Linksextremismus -->
+          <div id="phenom-links" class="phenomenon-panel hidden space-y-5">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-rose-200 pb-3">
+              <h3 class="text-xl font-extrabold text-rose-900">b) Linksextremismus</h3>
+              <span class="text-xs font-semibold px-3 py-1 rounded-full bg-rose-100 text-rose-900">Kern: Abschaffung von Rechtsstaat &amp; Gewaltmonopol</span>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+              <div class="space-y-3">
+                <h4 class="font-bold text-slate-900 text-sm uppercase tracking-wide">Ideologische Kernelemente &amp; Strömungen</h4>
+                <ul class="space-y-2 text-sm text-slate-700">
+                  <li class="flex items-start gap-2">
+                    <span class="text-rose-700 font-bold mt-0.5">•</span>
+                    <span><strong>Systemüberwindung:</strong> Ziel ist die revolutionäre Beseitigung der parlamentarischen Demokratie, des Rechtsstaats und der sozialen Marktwirtschaft („Systemsturz“).</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-rose-700 font-bold mt-0.5">•</span>
+                    <span><strong>Ablehnung des Gewaltmonopols:</strong> Der Staat und insbesondere Polizei und Justiz werden pauschal als Unterdrückungsinstrumente („Repressionsapparat“) bekämpft; Gewalt gegen Sachen und teils gegen Personen („militanter Widerstand“) wird legitimiert.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-rose-700 font-bold mt-0.5">•</span>
+                    <span><strong>Strömungen:</strong> <em>Militante Autonome &amp; Anarchist*innen</em> (streben eine herrschaftsfreie Gesellschaft ohne Staat an) sowie <em>dogmatische Marxist*innen-Leninist*innen</em> (streben eine autoritäre Einparteienherrschaft / „Diktatur des Proletariats“ an).</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="space-y-3">
+                <h4 class="font-bold text-slate-900 text-sm uppercase tracking-wide">Wichtige fachliche Abgrenzung</h4>
+                <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4 space-y-2.5 text-sm text-slate-800">
+                  <div class="font-bold text-emerald-900 flex items-center gap-2">
+                    <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <span>Nicht extremistisch: Demokratisches linkes &amp; antifaschistisches Engagement</span>
+                  </div>
+                  <p>
+                    Soziale Gerechtigkeit zu fordern, Kapitalismus oder Mietenpolitik scharf zu kritisieren, für Klimaschutz zu demonstrieren oder sich gewaltfrei gegen Rassismus und Rechtsextremismus zu engagieren, ist <strong>legitimer Teil demokratischer Meinungsfreiheit</strong>.
+                  </p>
+                  <p>
+                    <strong>Die Grenze zum Linksextremismus</strong> wird erst überschritten, wenn die parlamentarische Demokratie als solche abgeschafft werden soll, Grundrechte Andersdenkender negiert oder Gewalt bzw. Selbstjustiz als politisches Mittel gerechtfertigt werden.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- C) Islamismus -->
+          <div id="phenom-islamismus" class="phenomenon-panel hidden space-y-5">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-indigo-200 pb-3">
+              <h3 class="text-xl font-extrabold text-indigo-900">c) Islamismus</h3>
+              <span class="text-xs font-semibold px-3 py-1 rounded-full bg-indigo-100 text-indigo-900">Kern: Politische Ideologie statt Religion</span>
+            </div>
+
+            <!-- Hervorgehobene Trennungs-Box -->
+            <div class="bg-indigo-50 border-2 border-indigo-200 rounded-xl p-4">
+              <h4 class="font-bold text-indigo-950 text-sm mb-2">Zentrale Unterscheidung für pädagogische Fachkräfte:</h4>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                <div class="bg-white rounded-lg p-3 border border-emerald-200">
+                  <strong class="text-emerald-800 block mb-1">✓ Islam (Weltreligion)</strong>
+                  Ein vielfältiger religiöser Glaube mit Millionen friedlich lebenden Muslim*innen in Deutschland – ausdrücklich geschützt durch die Religionsfreiheit (Art. 4 GG).
+                </div>
+                <div class="bg-white rounded-lg p-3 border border-indigo-300">
+                  <strong class="text-indigo-900 block mb-1">✖ Islamismus (Politische Ideologie)</strong>
+                  Instrumentalisierung der Religion als politisches Herrschaftssystem. Stellt eine politisierte Auslegung der Scharia <em>über</em> Grundgesetz, Volkssouveränität und Menschenrechte.
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+              <div class="space-y-3">
+                <h4 class="font-bold text-slate-900 text-sm uppercase tracking-wide">Merkmale &amp; Ausprägungen</h4>
+                <ul class="space-y-2 text-sm text-slate-700">
+                  <li class="flex items-start gap-2">
+                    <span class="text-indigo-700 font-bold mt-0.5">•</span>
+                    <span><strong>Ablehnung von Demokratie &amp; Gleichberechtigung:</strong> Nicht das Volk, sondern allein „Gottes Gesetz“ (in eigener Auslegung) dürfe gelten; Frauen, religiöse Minderheiten, Jüdinnen/Juden und queere Menschen werden abgewertet.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-indigo-700 font-bold mt-0.5">•</span>
+                    <span><strong>Legalistischer Islamismus:</strong> Lehnt Gewalt aktuell meist ab, versucht aber gesellschaftliche Institutionen, Vereine und Politik langfristig im Sinne einer islamistischen Ordnung umzugestalten.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-indigo-700 font-bold mt-0.5">•</span>
+                    <span><strong>Salafismus:</strong> Ultrakonservative Strömung, die ein starres „Schwarz-Weiß-Weltbild“ (strenges <em>Halal/Haram</em>) predigt und Integration in die pluralistische Gesellschaft ablehnt.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-indigo-700 font-bold mt-0.5">•</span>
+                    <span><strong>Dschihadismus:</strong> Militante, terroristische Ausprägung, die Gewalt und Terroranschläge gegen „Ungläubige“ legitimiert (z. B. IS, al-Qaida).</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="space-y-3">
+                <h4 class="font-bold text-slate-900 text-sm uppercase tracking-wide">Jugendkultur &amp; Online-Prediger</h4>
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-2.5 text-sm text-slate-700">
+                  <p>
+                    <strong>TikTok-Islamismus &amp; Influencer:</strong> Radikale Online-Prediger sprechen deutsch, nutzen Jugendjargon, professionelle Schnitte und emotionale Musik. Sie bieten klare Regeln für Alltag, Kleidung und Beziehungen.
+                  </p>
+                  <p>
+                    <strong>Pädagogische Falle vermeiden:</strong> Normale religiöse Praxis (z. B. Fasten im Ramadan, Kopftuch, Gebetswünsche) ist <em>kein</em> Zeichen für Islamismus! Erst Abwertung Andersgläubiger, Missionierungsdruck („Haram-Polizei“), Abschottung und Ablehnung von Demokratie/Gleichberechtigung sind Warnzeichen.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2.2 Interaktive Vergleichstabelle -->
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          <div>
+            <h3 class="text-xl font-bold text-slate-900">2.2 Interaktiver Vergleich: Gemeinsamkeiten &amp; Unterschiede</h3>
+            <p class="text-sm text-slate-600">Filtern Sie nach Kriterium oder blenden Sie gezielt Phänomenbereiche zum Vergleichen ein/aus.</p>
+          </div>
+
+          <!-- Filter-Leiste -->
+          <div class="flex flex-wrap gap-2 no-print">
+            <label for="compare-criterion-filter" class="sr-only">Kriterium filtern</label>
+            <select id="compare-criterion-filter" class="px-3 py-2 rounded-xl border border-slate-300 bg-white text-xs sm:text-sm font-semibold text-slate-800 min-h-[40px]">
+              <option value="all">Alle Kriterien anzeigen</option>
+              <option value="menschenbild">Menschenbild</option>
+              <option value="staatsverstaendnis">Staatsverständnis</option>
+              <option value="feindbilder">Feindbilder</option>
+              <option value="gewalt">Verhältnis zur Gewalt</option>
+              <option value="jugendkultur">Jugendkulturelle Zugänge</option>
+            </select>
+
+            <div class="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl">
+              <button type="button" data-col-toggle="rechts" class="col-toggle-btn px-2.5 py-1.5 rounded-lg text-xs font-bold bg-amber-700 text-white transition" aria-pressed="true">Rechts</button>
+              <button type="button" data-col-toggle="links" class="col-toggle-btn px-2.5 py-1.5 rounded-lg text-xs font-bold bg-rose-700 text-white transition" aria-pressed="true">Links</button>
+              <button type="button" data-col-toggle="islamismus" class="col-toggle-btn px-2.5 py-1.5 rounded-lg text-xs font-bold bg-indigo-700 text-white transition" aria-pressed="true">Islamismus</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Responsive Tabelle -->
+        <div class="overflow-x-auto rounded-xl border border-slate-200">
+          <table class="w-full text-left border-collapse text-sm">
+            <thead>
+              <tr class="bg-slate-100 text-slate-800 border-b border-slate-200">
+                <th class="p-3.5 font-bold w-40">Kriterium</th>
+                <th class="p-3.5 font-bold text-amber-900 bg-amber-50/70 col-rechts">Rechtsextremismus</th>
+                <th class="p-3.5 font-bold text-rose-900 bg-rose-50/70 col-links">Linksextremismus</th>
+                <th class="p-3.5 font-bold text-indigo-900 bg-indigo-50/70 col-islamismus">Islamismus</th>
+              </tr>
+            </thead>
+            <tbody id="comparison-tbody" class="divide-y divide-slate-200">
+              <tr data-criterion="menschenbild" class="hover:bg-slate-50/80">
+                <th scope="row" class="p-3.5 font-bold text-slate-900 bg-slate-50/60">Menschenbild</th>
+                <td class="p-3.5 text-slate-700 col-rechts">Biologistisch/völkisch: Menschen sind ungleichwertig nach Herkunft und Abstammung.</td>
+                <td class="p-3.5 text-slate-700 col-links">Formal egalitär (Gleichheit aller), aber radikale Einteilung in „Unterdrückte“ vs. „Klassen-/Systemfeinde“.</td>
+                <td class="p-3.5 text-slate-700 col-islamismus">Religiös-politisch hierarchisch: „Rechtgläubige“ stehen über „Ungläubigen“; starre Geschlechterhierarchie.</td>
+              </tr>
+              <tr data-criterion="staatsverstaendnis" class="hover:bg-slate-50/80">
+                <th scope="row" class="p-3.5 font-bold text-slate-900 bg-slate-50/60">Staatsverständnis</th>
+                <td class="p-3.5 text-slate-700 col-rechts">Autoritärer, ethnisch homogener Führer- oder „Volksstaat“ statt pluralistischer Demokratie.</td>
+                <td class="p-3.5 text-slate-700 col-links">Abschaffung des bürgerlichen Rechtsstaats; Ziel: herrschaftsfreier Anarchismus oder sozialistische Einparteienherrschaft.</td>
+                <td class="p-3.5 text-slate-700 col-islamismus">Gottesstaat / Kalifat auf Basis einer politisierten Scharia; Ablehnung von Volkssouveränität &amp; Grundgesetz.</td>
+              </tr>
+              <tr data-criterion="feindbilder" class="hover:bg-slate-50/80">
+                <th scope="row" class="p-3.5 font-bold text-slate-900 bg-slate-50/60">Zentrale Feindbilder</th>
+                <td class="p-3.5 text-slate-700 col-rechts">Migrant*innen, Geflüchtete, Jüdinnen/Juden, Muslime, queere Menschen, demokratische Medien &amp; Parteien.</td>
+                <td class="p-3.5 text-slate-700 col-links">„Das kapitalistische System“, Polizei/Sicherheitsbehörden, Unternehmen, politische Gegner (v. a. Rechte).</td>
+                <td class="p-3.5 text-slate-700 col-islamismus">„Der Westen“, Demokratie, säkulare Werte, Jüdinnen/Juden (Antisemitismus), Andersgläubige &amp; liberale Muslime.</td>
+              </tr>
+              <tr data-criterion="gewalt" class="hover:bg-slate-50/80">
+                <th scope="row" class="p-3.5 font-bold text-slate-900 bg-slate-50/60">Verhältnis zur Gewalt</th>
+                <td class="p-3.5 text-slate-700 col-rechts">Hohe Gewaltbereitschaft gegen Minderheiten &amp; politische Gegner (von Einschüchterung bis Rechtsterrorismus).</td>
+                <td class="p-3.5 text-slate-700 col-links">Gewalt gegen Sachen (Brandstiftung, Sachbeschädigung) und in militanten Kreisen gegen Polizei &amp; politische Gegner.</td>
+                <td class="p-3.5 text-slate-700 col-islamismus">Reicht von gewaltfreiem Legalismus über Einschüchterung bis zu schwerem dschihadistischem Terrorismus.</td>
+              </tr>
+              <tr data-criterion="jugendkultur" class="hover:bg-slate-50/80">
+                <th scope="row" class="p-3.5 font-bold text-slate-900 bg-slate-50/60">Jugendkulturelle Zugänge</th>
+                <td class="p-3.5 text-slate-700 col-rechts">TikTok-Memes, Kampfsport/Fitness, Rap &amp; Rechtsrock, Szenemarken, „Heimat“- und Kameradschaftsangebote.</td>
+                <td class="p-3.5 text-slate-700 col-links">Subkulturen (Punk, autonome Zentren, Graffiti, Demonstrationskultur), Protest- und Solidaritätsästhetik.</td>
+                <td class="p-3.5 text-slate-700 col-islamismus">Online-Prediger auf TikTok/Instagram, „Halal-Lifestyle“, Nasheeds, Gemeinschaftsgefühl („Ummah“) gegen Ausgrenzung.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 2.3 Strukturelle Gemeinsamkeiten aller Extremismusformen -->
+      <div class="bg-petrol-900 text-white rounded-2xl p-6 shadow-md space-y-4 print-avoid-break">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-petrol-200">Querschnittswissen</span>
+          <h3 class="text-xl font-bold mt-0.5">2.3 Strukturelle Gemeinsamkeiten aller Extremismusformen</h3>
+          <p class="text-sm text-petrol-100 mt-1">
+            Trotz sehr unterschiedlicher Inhalte funktionieren extremistische Ideologien psychologisch und strukturell nach ähnlichen Mustern:
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+          <div class="bg-white/10 backdrop-blur-sm border border-white/15 rounded-xl p-4">
+            <div class="font-bold text-sm text-white mb-1">1. Schwarz-Weiß-Denken</div>
+            <p class="text-xs text-petrol-100 leading-relaxed">Strikte Einteilung der Welt in „Wir (die Guten/Reinen)“ gegen „Die (die Feinde/Verräter)“.</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm border border-white/15 rounded-xl p-4">
+            <div class="font-bold text-sm text-white mb-1">2. Absolutheitsanspruch</div>
+            <p class="text-xs text-petrol-100 leading-relaxed">Anspruch auf die eine, unumstößliche Wahrheit; Zweifel oder Kritik gelten als Verrat.</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm border border-white/15 rounded-xl p-4">
+            <div class="font-bold text-sm text-white mb-1">3. Verschwörungserzählungen</div>
+            <p class="text-xs text-petrol-100 leading-relaxed">Komplexe Krisen werden geheimen „Strippenziehern“ zugeschrieben (oft antisemitisch aufgeladen).</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm border border-white/15 rounded-xl p-4">
+            <div class="font-bold text-sm text-white mb-1">4. Anti-Pluralismus</div>
+            <p class="text-xs text-petrol-100 leading-relaxed">Ablehnung von Meinungsvielfalt, Kompromissen, Gewaltenteilung und Minderheitenschutz.</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm border border-white/15 rounded-xl p-4">
+            <div class="font-bold text-sm text-white mb-1">5. Opfermythos</div>
+            <p class="text-xs text-petrol-100 leading-relaxed">Selbstinszenierung als verfolgte Minderheit, um eigene Aggression als „Notwehr“ zu rechtfertigen.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modul-Footer Navigation -->
+      <div class="module-footer-nav flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-200">
+        <button type="button" data-prev-module="1" class="btn-prev-mod inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-sm transition min-h-[44px]">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+          <span>Zurück: Modul 1</span>
+        </button>
+        <button type="button" data-next-module="3" class="btn-next-mod inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-petrol-900 hover:bg-petrol-800 text-white font-semibold text-sm shadow-sm transition min-h-[44px]">
+          <span>Modul abschließen &amp; weiter: Radikalisierung</span>
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ===============================================================
+         MODUL 3: RADIKALISIERUNG VERSTEHEN
+         =============================================================== -->
+    <section id="panel-mod-3" role="tabpanel" aria-labelledby="tab-mod-3" class="module-panel hidden animate-fade-in space-y-8 print-break-before">
+      <!-- Modul-Header -->
+      <div class="bg-gradient-to-br from-teal-900 via-petrol-900 to-slate-800 text-white rounded-2xl p-6 sm:p-8 shadow-md">
+        <div class="flex flex-wrap items-center gap-2 mb-3">
+          <span class="px-3 py-1 rounded-full bg-white/15 text-xs font-semibold uppercase tracking-wider">Modul 3 von 6</span>
+          <span class="px-3 py-1 rounded-full bg-teal-300/20 text-teal-100 text-xs font-semibold">Entwicklungspsychologie &amp; Prävention</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3">
+          Radikalisierungsprozesse bei Kindern &amp; Jugendlichen verstehen
+        </h2>
+        <p class="text-petrol-100 text-sm sm:text-base max-w-3xl leading-relaxed">
+          Niemand wird „extremistisch geboren“. Radikalisierung ist ein schrittweiser sozialer Prozess, bei dem Belastungen (Push-Faktoren) und verlockende Angebote radikaler Gruppen (Pull-Faktoren) ineinandergreifen. Gerade in Kita, Hort und Jugendhilfe liegen enorme Chancen für frühzeitige Prävention.
+        </p>
+      </div>
+
+      <!-- 3.1 Push- und Pull-Faktoren interaktiv -->
+      <div class="space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <h3 class="text-xl font-bold text-slate-900">3.1 Push- und Pull-Faktoren (Anklicken für Pädagogik-Tipp)</h3>
+            <p class="text-sm text-slate-600">
+              <strong>Push-Faktoren</strong> drücken Jugendliche aus der Gesellschaft weg; <strong>Pull-Faktoren</strong> ziehen sie in extremistische Gruppen hinein.
+            </p>
+          </div>
+          <div class="flex items-center gap-1.5 bg-white border border-slate-200 p-1 rounded-xl no-print shrink-0">
+            <button type="button" data-pp-filter="all" class="pp-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-petrol-900 text-white transition">Alle (6)</button>
+            <button type="button" data-pp-filter="push" class="pp-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-slate-100 transition">Push-Faktoren</button>
+            <button type="button" data-pp-filter="pull" class="pp-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-slate-100 transition">Pull-Faktoren</button>
+          </div>
+        </div>
+
+        <div id="push-pull-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Wird per JS gerendert für saubere Interaktivität -->
+        </div>
+      </div>
+
+      <!-- 3.2 Interaktiver 4-Stufen-Prozess der Radikalisierung -->
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-6 print-avoid-break">
+        <div>
+          <h3 class="text-xl font-bold text-slate-900">3.2 Der 4-Stufen-Prozess der Radikalisierung &amp; Frühwarnzeichen</h3>
+          <p class="text-sm text-slate-600 mt-1">
+            Radikalisierung verläuft nicht zwingend linear und ist auf jeder Stufe umkehrbar. Klicken Sie auf die einzelnen Stufen, um Dynamik, Frühwarnzeichen (Kita/Hort &amp; Jugendhilfe) und pädagogische Chancen zu sehen.
+          </p>
+        </div>
+
+        <!-- Stepper-Buttons -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 no-print" role="tablist" aria-label="Stufen der Radikalisierung">
+          <button type="button" role="tab" aria-selected="true" data-stage="1" class="stage-btn p-4 rounded-xl border-2 border-petrol-700 bg-petrol-50 text-left transition">
+            <div class="text-xs font-bold text-petrol-700 uppercase">Stufe 1</div>
+            <div class="font-bold text-slate-900 text-sm sm:text-base mt-0.5">Verunsicherung &amp; Suche</div>
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-stage="2" class="stage-btn p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-petrol-300 text-left transition">
+            <div class="text-xs font-bold text-slate-500 uppercase">Stufe 2</div>
+            <div class="font-bold text-slate-900 text-sm sm:text-base mt-0.5">Ansprache &amp; Zugehörigkeit</div>
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-stage="3" class="stage-btn p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-petrol-300 text-left transition">
+            <div class="text-xs font-bold text-slate-500 uppercase">Stufe 3</div>
+            <div class="font-bold text-slate-900 text-sm sm:text-base mt-0.5">Verfestigung &amp; Abschottung</div>
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-stage="4" class="stage-btn p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-petrol-300 text-left transition">
+            <div class="text-xs font-bold text-slate-500 uppercase">Stufe 4</div>
+            <div class="font-bold text-slate-900 text-sm sm:text-base mt-0.5">Handlung &amp; Gewaltbereitschaft</div>
+          </button>
+        </div>
+
+        <!-- Dynamischer Stufen-Detailbereich -->
+        <div id="stage-detail-box" class="rounded-xl bg-slate-50 border border-slate-200 p-5" aria-live="polite">
+          <!-- Wird per JS befüllt -->
+        </div>
+
+        <!-- Fachlicher Hinweis -->
+        <div class="flex items-start gap-3 p-4 rounded-xl bg-sky-50 border border-sky-200 text-xs sm:text-sm text-sky-950">
+          <svg class="w-5 h-5 text-sky-700 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <p>
+            <strong>Wichtig für die Beobachtung:</strong> Ein einzelnes Merkmal (z. B. pubertärer Rückzug, neue Kleidung oder Provokation) ist noch <em>kein</em> Beweis für Extremismus! Erst das <strong>Zusammenspiel mehrerer Warnsignale über längere Zeit</strong> – verbunden mit Abwertung anderer Menschen – erfordert gezieltes pädagogisches Handeln und Fachberatung.
+          </p>
+        </div>
+      </div>
+
+      <!-- Modul-Footer Navigation -->
+      <div class="module-footer-nav flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-200">
+        <button type="button" data-prev-module="2" class="btn-prev-mod inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-sm transition min-h-[44px]">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+          <span>Zurück: Modul 2</span>
+        </button>
+        <button type="button" data-next-module="4" class="btn-next-mod inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-petrol-900 hover:bg-petrol-800 text-white font-semibold text-sm shadow-sm transition min-h-[44px]">
+          <span>Modul abschließen &amp; weiter: Praxis-Simulator</span>
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ===============================================================
+         MODUL 4: PRAXIS-SIMULATOR FÜR ERZIEHER*INNEN
+         =============================================================== -->
+    <section id="panel-mod-4" role="tabpanel" aria-labelledby="tab-mod-4" class="module-panel hidden animate-fade-in space-y-8 print-break-before">
+      <!-- Modul-Header -->
+      <div class="bg-gradient-to-br from-petrol-900 via-slate-800 to-teal-900 text-white rounded-2xl p-6 sm:p-8 shadow-md">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="px-3 py-1 rounded-full bg-white/15 text-xs font-semibold uppercase tracking-wider">Modul 4 von 6</span>
+            <span class="px-3 py-1 rounded-full bg-emerald-400/20 text-emerald-100 text-xs font-semibold">Berufspraxis &amp; Entscheidungstraining</span>
+          </div>
+          <div class="bg-white/15 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-bold" aria-live="polite">
+            Gelöste Fälle: <span id="simulator-progress-text">0 von 4</span>
+          </div>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3">
+          Praxis-Simulator: Wie handeln Sie als Erzieher*in?
+        </h2>
+        <p class="text-petrol-100 text-sm sm:text-base max-w-3xl leading-relaxed">
+          Trainieren Sie Ihre professionelle Handlungssicherheit anhand von vier realistischen Fallbeispielen aus Kita, Hort, Jugendclub und Jugendwohngruppe. Wählen Sie jeweils eine Handlungsoption und erhalten Sie differenziertes pädagogisches Feedback.
+        </p>
+      </div>
+
+      <!-- Fall-Auswahlleiste -->
+      <div id="case-selector-bar" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 no-print" role="tablist" aria-label="Fallstudien">
+        <!-- Wird per JS gerendert -->
+      </div>
+
+      <!-- Aktiver Fall-Container -->
+      <div id="case-stage" class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-6" aria-live="polite">
+        <!-- Wird per JS gerendert -->
+      </div>
+
+      <!-- Zusammenfassung der 5 pädagogischen Grundregeln -->
+      <div class="bg-teal-50/80 border-2 border-teal-200 rounded-2xl p-6 space-y-4 print-avoid-break">
+        <div class="flex items-center gap-3">
+          <span class="w-9 h-9 rounded-xl bg-teal-800 text-white flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </span>
+          <div>
+            <h3 class="text-lg font-bold text-teal-950">Die 5 pädagogischen Grundregeln im Überblick</h3>
+            <p class="text-xs sm:text-sm text-teal-800">Leitplanken für professionelles Handeln in Kita, Hort und Jugendhilfe</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+          <div class="bg-white rounded-xl p-4 border border-teal-100 shadow-sm">
+            <div class="text-xs font-extrabold text-teal-700 mb-1">01 · HALTUNG ZEIGEN</div>
+            <p class="text-xs text-slate-700 leading-relaxed">Menschenfeindlichkeit und Gewalt klar, ruhig und unmissverständlich widersprechen – nie schweigend dulden.</p>
+          </div>
+          <div class="bg-white rounded-xl p-4 border border-teal-100 shadow-sm">
+            <div class="text-xs font-extrabold text-teal-700 mb-1">02 · BEZIEHUNG HALTEN</div>
+            <p class="text-xs text-slate-700 leading-relaxed">Zwischen Person und Aussage trennen: Die Ideologie ablehnen, aber Gesprächskanäle zu Jugendlichen offenhalten.</p>
+          </div>
+          <div class="bg-white rounded-xl p-4 border border-teal-100 shadow-sm">
+            <div class="text-xs font-extrabold text-teal-700 mb-1">03 · IM TEAM HANDELN</div>
+            <p class="text-xs text-slate-700 leading-relaxed">Vorfälle dokumentieren, im Team reflektieren und Einrichtungsleitung / Träger frühzeitig einbinden – kein Einzelkämpfertum.</p>
+          </div>
+          <div class="bg-white rounded-xl p-4 border border-teal-100 shadow-sm">
+            <div class="text-xs font-extrabold text-teal-700 mb-1">04 · KINDER SCHÜTZEN</div>
+            <p class="text-xs text-slate-700 leading-relaxed">Schutz und Stärkung betroffener Kinder stehen immer an erster Stelle. Bei Kindeswohlgefährdung greift § 8a SGB VIII.</p>
+          </div>
+          <div class="bg-white rounded-xl p-4 border border-teal-100 shadow-sm">
+            <div class="text-xs font-extrabold text-teal-700 mb-1">05 · BERATUNG NUTZEN</div>
+            <p class="text-xs text-slate-700 leading-relaxed">Spezialisierte Thüringer Fachstellen (MOBIT, VPN, Distanz u. a.) kostenfrei und vertraulich hinzuziehen.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modul-Footer Navigation -->
+      <div class="module-footer-nav flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-200">
+        <button type="button" data-prev-module="3" class="btn-prev-mod inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-sm transition min-h-[44px]">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+          <span>Zurück: Modul 3</span>
+        </button>
+        <button type="button" data-next-module="5" class="btn-next-mod inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-petrol-900 hover:bg-petrol-800 text-white font-semibold text-sm shadow-sm transition min-h-[44px]">
+          <span>Modul abschließen &amp; weiter: Wissenscheck</span>
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ===============================================================
+         MODUL 5: WISSENSCHECK & ZUORDNUNG
+         =============================================================== -->
+    <section id="panel-mod-5" role="tabpanel" aria-labelledby="tab-mod-5" class="module-panel hidden animate-fade-in space-y-8 print-break-before">
+      <!-- Modul-Header -->
+      <div class="bg-gradient-to-br from-indigo-950 via-petrol-900 to-slate-900 text-white rounded-2xl p-6 sm:p-8 shadow-md">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="px-3 py-1 rounded-full bg-white/15 text-xs font-semibold uppercase tracking-wider">Modul 5 von 6</span>
+            <span class="px-3 py-1 rounded-full bg-indigo-300/20 text-indigo-100 text-xs font-semibold">Selbsttest &amp; Sicherung</span>
+          </div>
+          <div class="bg-white/15 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-bold" aria-live="polite">
+            Gesamtpunkte: <span id="mod5-total-score">0 von 17</span>
+          </div>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3">
+          Wissenscheck &amp; interaktive Zuordnung
+        </h2>
+        <p class="text-slate-200 text-sm sm:text-base max-w-3xl leading-relaxed">
+          Überprüfen Sie Ihr Wissen in zwei interaktiven Formaten: Ordnen Sie zuerst neun typische Aussagen fachlich sicher zu und testen Sie anschließend Ihr Verständnis im Multiple-Choice-Quiz.
+        </p>
+      </div>
+
+      <!-- 5.1 Interaktive Zuordnungsübung -->
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-5">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-4">
+          <div>
+            <h3 class="text-xl font-bold text-slate-900">5.1 Zuordnungsübung: „Was gehört wohin?“</h3>
+            <p class="text-sm text-slate-600 mt-0.5">
+              Ordnen Sie jede der 9 Aussagen per Klick der passenden Kategorie zu. Achten Sie auch auf demokratische, nicht extremistische Positionen!
+            </p>
+          </div>
+          <div class="flex items-center gap-3 shrink-0 no-print">
+            <span class="px-3 py-1.5 rounded-xl bg-petrol-50 border border-petrol-200 text-xs font-bold text-petrol-900">
+              Ergebnis: <span id="sorting-score">0</span> / 9 richtig
+            </span>
+            <button type="button" id="btn-reset-sorting" class="px-3 py-1.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition min-h-[36px]">
+              Neu starten
+            </button>
+          </div>
+        </div>
+
+        <div id="sorting-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- 9 Zuordnungskarten werden per JS gerendert -->
+        </div>
+      </div>
+
+      <!-- 5.2 Multiple-Choice-Quiz (8 Fragen) -->
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-5">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-4">
+          <div>
+            <h3 class="text-xl font-bold text-slate-900">5.2 Multiple-Choice-Quiz (8 Prüfungsfragen)</h3>
+            <p class="text-sm text-slate-600 mt-0.5">
+              Sofort-Feedback zu jeder Antwort inklusive Begründung für Klausur und Praxis.
+            </p>
+          </div>
+          <div class="flex items-center gap-3 shrink-0 no-print">
+            <span class="px-3 py-1.5 rounded-xl bg-petrol-50 border border-petrol-200 text-xs font-bold text-petrol-900">
+              Quiz-Punkte: <span id="quiz-score">0</span> / 8
+            </span>
+            <button type="button" id="btn-reset-quiz" class="px-3 py-1.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition min-h-[36px]">
+              Quiz neu starten
+            </button>
+          </div>
+        </div>
+
+        <!-- Quiz-Fragenliste -->
+        <div id="quiz-container" class="space-y-5">
+          <!-- 8 Quizfragen werden per JS gerendert -->
+        </div>
+
+        <!-- Auswertungsbanner (erscheint, sobald alle 8 Fragen beantwortet wurden) -->
+        <div id="quiz-result-banner" class="hidden rounded-2xl p-6 border-2 transition-all" aria-live="polite">
+          <!-- Dynamische Auswertung -->
+        </div>
+      </div>
+
+      <!-- Modul-Footer Navigation -->
+      <div class="module-footer-nav flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-200">
+        <button type="button" data-prev-module="4" class="btn-prev-mod inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-sm transition min-h-[44px]">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+          <span>Zurück: Modul 4</span>
+        </button>
+        <button type="button" data-next-module="6" class="btn-next-mod inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-petrol-900 hover:bg-petrol-800 text-white font-semibold text-sm shadow-sm transition min-h-[44px]">
+          <span>Modul abschließen &amp; weiter: Hilfe &amp; Netzwerk Thüringen</span>
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ===============================================================
+         MODUL 6: HILFE & NETZWERK THÜRINGEN
+         =============================================================== -->
+    <section id="panel-mod-6" role="tabpanel" aria-labelledby="tab-mod-6" class="module-panel hidden animate-fade-in space-y-8 print-break-before">
+      <!-- Modul-Header -->
+      <div class="bg-gradient-to-br from-emerald-900 via-petrol-900 to-slate-900 text-white rounded-2xl p-6 sm:p-8 shadow-md">
+        <div class="flex flex-wrap items-center gap-2 mb-3">
+          <span class="px-3 py-1 rounded-full bg-white/15 text-xs font-semibold uppercase tracking-wider">Modul 6 von 6</span>
+          <span class="px-3 py-1 rounded-full bg-emerald-300/20 text-emerald-100 text-xs font-semibold">Unterstützung &amp; Fachstellen</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3">
+          Hilfe, Handlungsleitfaden &amp; Netzwerk in Thüringen
+        </h2>
+        <p class="text-emerald-50 text-sm sm:text-base max-w-3xl leading-relaxed">
+          Niemand muss extremistischen Vorfällen oder Radikalisierungsprozessen allein begegnen. In Thüringen steht ein enges Netz aus kostenfreien, vertraulichen Fachberatungsstellen für Erzieher*innen, Teams, Eltern und Jugendliche bereit.
+        </p>
+      </div>
+
+      <!-- 6.1 Interaktive Checkliste: 5 Schritte im Verdachtsfall -->
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4 print-avoid-break">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <h3 class="text-xl font-bold text-slate-900">6.1 Handlungsleitfaden: 5 Schritte im Verdachtsfall</h3>
+            <p class="text-sm text-slate-600">Interaktive Merkhilfe für Kita, Hort und Jugendhilfe – haken Sie die Schritte zum Einprägen ab:</p>
+          </div>
+          <span id="checklist-status" class="text-xs font-bold px-3 py-1.5 rounded-xl bg-petrol-50 text-petrol-900 border border-petrol-200 shrink-0">
+            0 / 5 geprüft
+          </span>
+        </div>
+
+        <div id="checklist-container" class="space-y-2.5">
+          <!-- Wird per JS gerendert -->
+        </div>
+      </div>
+
+      <!-- 6.2 Beratungsstellen in Thüringen & bundesweit (mit Filter) -->
+      <div class="space-y-4">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+          <div>
+            <h3 class="text-xl font-bold text-slate-900">6.2 Kostenfreie &amp; vertrauliche Fachstellen in Thüringen</h3>
+            <p class="text-sm text-slate-600">Filtern Sie die Anlaufstellen nach dem jeweiligen Themenfeld:</p>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5 no-print" role="group" aria-label="Beratungsstellen filtern">
+            <button type="button" data-net-filter="all" class="net-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-petrol-900 text-white transition min-h-[40px]">Alle (8)</button>
+            <button type="button" data-net-filter="rechts" class="net-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-slate-100 transition min-h-[40px]">Rechtsextremismus</button>
+            <button type="button" data-net-filter="islamismus" class="net-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-slate-100 transition min-h-[40px]">Islamismus</button>
+            <button type="button" data-net-filter="demokratie" class="net-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-slate-100 transition min-h-[40px]">Demokratiebildung &amp; Betroffene</button>
+          </div>
+        </div>
+
+        <div id="network-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- 8 Beratungs-Karten werden per JS gerendert -->
+        </div>
+      </div>
+
+      <!-- 6.3 Pädagogischer Auftrag im Thüringer Bildungsplan -->
+      <div class="bg-gradient-to-r from-petrol-50 to-emerald-50 border-2 border-petrol-200 rounded-2xl p-6 space-y-4 print-avoid-break">
+        <div class="flex items-start gap-3">
+          <span class="w-10 h-10 rounded-xl bg-petrol-900 text-white flex items-center justify-center shrink-0 mt-0.5">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+          </span>
+          <div class="space-y-3">
+            <h3 class="text-lg font-bold text-petrol-950">
+              Pädagogischer Auftrag: Demokratiebildung im Thüringer Bildungsplan bis 18 Jahre
+            </h3>
+            <p class="text-sm text-slate-700 leading-relaxed">
+              Die wirksamste Extremismusprävention beginnt nicht erst bei akuten Vorfällen, sondern im alltäglichen Miteinander. Der <strong>Thüringer Bildungsplan (TBP-18)</strong> verankert Demokratiebildung als verbindliche Querschnittsaufgabe von der Krippe bis ins Jugendalter:
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <div class="bg-white rounded-xl p-4 border border-petrol-100">
+                <h4 class="font-bold text-petrol-900 text-sm mb-1">Partizipation von Anfang an</h4>
+                <p class="text-xs text-slate-600 leading-relaxed">Kinder erleben Selbstwirksamkeit durch altersgerechte Mitbestimmung in Kita-Räten, Projekten und Alltagsgestaltung – das stärkt Widerstandskraft gegen autoritäre Angebote.</p>
+              </div>
+              <div class="bg-white rounded-xl p-4 border border-petrol-100">
+                <h4 class="font-bold text-petrol-900 text-sm mb-1">Kinderrechte (UN-KRK)</h4>
+                <p class="text-xs text-slate-600 leading-relaxed">Schutz, Förderung und Beteiligung (Art. 2, 12, 19 UN-KRK) gelten für jedes Kind diskriminierungsfrei – unabhängig von Herkunft, Sprache oder Religion.</p>
+              </div>
+              <div class="bg-white rounded-xl p-4 border border-petrol-100">
+                <h4 class="font-bold text-petrol-900 text-sm mb-1">Vorurteilsbewusste Bildung</h4>
+                <p class="text-xs text-slate-600 leading-relaxed">Vielfalt in Bilderbüchern, Spielmaterialien und Sprache sichtbar machen, eigene Stereotype im Team reflektieren und Kinder zum kritischen Denken ermutigen.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modul-Footer Navigation -->
+      <div class="module-footer-nav flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-200">
+        <button type="button" data-prev-module="5" class="btn-prev-mod inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-sm transition min-h-[44px]">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+          <span>Zurück: Modul 5</span>
+        </button>
+        <button type="button" id="btn-complete-course" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-sm shadow-sm transition min-h-[44px]">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          <span>Modul 6 abschließen &amp; Übersicht drucken</span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- =================================================================
+       FOOTER
+       ================================================================= -->
+  <footer class="bg-white border-t border-slate-200 py-5 mt-8 no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-500">
+      <p>Interaktive Lernplattform · Fach Politische Bildung · Ausbildung Erzieher*in (Thüringen)</p>
+      <p>Stand: Demokratiebildung &amp; Extremismusprävention auf Grundlage des Grundgesetzes und des Beutelsbacher Konsenses</p>
+    </div>
+  </footer>
+
+  <!-- =================================================================
+       MODAL FÜR FORTSCHRITT ZURÜCKSETZEN (KEIN confirm()/alert()!)
+       ================================================================= -->
+  <div id="reset-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/50 backdrop-blur-xs p-4 no-print" role="dialog" aria-modal="true" aria-labelledby="reset-modal-title">
+    <div class="bg-white rounded-2xl shadow-xl border border-slate-200 max-w-md w-full p-6 space-y-4">
+      <h3 id="reset-modal-title" class="text-lg font-bold text-slate-900">Lernfortschritt zurücksetzen?</h3>
+      <p class="text-sm text-slate-600 leading-relaxed">
+        Möchten Sie alle bearbeiteten Module, gelösten Praxisfälle, Checklisten-Häkchen sowie Ihre Ergebnisse in der Zuordnungsübung und im Quiz zurücksetzen?
+      </p>
+      <div class="flex items-center justify-end gap-2 pt-2">
+        <button type="button" id="btn-cancel-reset" class="px-4 py-2 rounded-xl border border-slate-300 text-sm font-semibold text-slate-700 hover:bg-slate-100 transition min-h-[40px]">
+          Abbrechen
+        </button>
+        <button type="button" id="btn-confirm-reset" class="px-4 py-2 rounded-xl bg-rose-700 hover:bg-rose-800 text-white text-sm font-semibold transition min-h-[40px]">
+          Ja, zurücksetzen
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast-Benachrichtigungscontainer -->
+  <div id="toast-container" class="fixed bottom-4 right-4 z-50 space-y-2 pointer-events-none no-print" aria-live="polite"></div>
+
+  <!-- =================================================================
+       VANILLA JAVASCRIPT: DATENMODELLE, INTERAKTIVITÄT & STATUSVERWALTUNG
+       ================================================================= -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ===============================================================
+         1. DIDAKTISCHE DATENMODELLE
+         =============================================================== */
+
+      /** Daten für Modul 1.2: Interaktives Spektrum */
+      const spectrumData = {
+        pluralismus: {
+          badge: 'Innerhalb der FDGO · Grundgesetzkonform',
+          title: 'Demokratischer Pluralismus',
+          borderClass: 'border-emerald-200 bg-emerald-50/40',
+          badgeClass: 'bg-emerald-100 text-emerald-900',
+          definition: 'Die normale, lebendige Meinungsvielfalt einer offenen Gesellschaft. Unterschiedliche politische, soziale und weltanschauliche Interessen ringen friedlich um Mehrheiten und Kompromisse.',
+          examples: 'Gewerkschaften, Umweltverbände, demokratische Parteien, Schüler*innen- und Jugendparlamente, friedliche Demonstrationen.',
+          verhaeltnis: 'Anerkennt uneingeschränkt Menschenwürde, Demokratieprinzip, Rechtsstaatlichkeit und Minderheitenschutz.',
+          paedagogik: 'Kernziel pädagogischer Arbeit: Kinder und Jugendliche erleben Vielfalt als Bereicherung und lernen demokratische Streitkultur.'
+        },
+        radikalismus: {
+          badge: 'Grenzwertig / Zugespitzt, aber noch innerhalb der FDGO',
+          title: 'Politischer Radikalismus',
+          borderClass: 'border-amber-200 bg-amber-50/40',
+          badgeClass: 'bg-amber-100 text-amber-900',
+          definition: 'Vom lateinischen „radix“ (Wurzel): Fordert tiefgreifende, grundlegende Veränderungen an bestehenden politischen, wirtschaftlichen oder gesellschaftlichen Zuständen – oft sehr zugespitzt und provokant.',
+          examples: 'Scharfe Kapitalismus- oder Regierungskritik, weitreichende Forderungen nach sofortigem Systemumbau in der Klimapolitik, zugespitzte soziale Proteste ohne Gewalt und ohne Menschenfeindlichkeit.',
+          verhaeltnis: 'Kann unbequem und provokant sein, bewegt sich aber noch auf dem Boden des Grundgesetzes und lehnt die FDGO nicht grundsätzlich ab.',
+          paedagogik: 'Im Rahmen des Kontroversitätsgebots ernst nehmen, sachlich diskutieren und klar von verfassungsfeindlichen oder gewaltlegitimierenden Positionen abgrenzen.'
+        },
+        extremismus: {
+          badge: 'Außerhalb der FDGO · Verfassungsfeindlich',
+          title: 'Extremismus (Rechts, Links, Islamismus)',
+          borderClass: 'border-rose-200 bg-rose-50/50',
+          badgeClass: 'bg-rose-100 text-rose-900',
+          definition: 'Bestrebungen, die darauf abzielen, die Freiheitlich-demokratische Grundordnung ganz oder in wesentlichen Teilen abzuschaffen und durch eine autoritäre, völkische, diktatorische oder religiös-fundamentalistische Ordnung zu ersetzen.',
+          examples: 'Rassistische/völkische Ideologien, Verherrlichung von Terrorismus oder Gewalt gegen Polizei/Minderheiten, Forderung nach Abschaffung der Demokratie zugunsten eines Gottesstaats oder einer Diktatur.',
+          verhaeltnis: 'Richtet sich aktiv gegen Menschenwürde (Art. 1 GG), Demokratieprinzip und/oder Rechtsstaatsprinzip (Art. 20 GG).',
+          paedagogik: 'Klare rote Linie! Keine falsche Neutralität: Widerspruch leisten, Betroffene schützen, Team/Leitung einbeziehen und Fachberatung hinzuziehen.'
+        }
+      };
+
+      /** Daten für Modul 3.1: Push- und Pull-Faktoren */
+      const pushPullFactors = [
+        {
+          id: 'pp-1',
+          type: 'push',
+          title: 'Diskriminierung & Ausgrenzung',
+          summary: 'Erfahrungen von Rassismus, Mobbing oder fehlender Anerkennung in Schule, Alltag oder Wohnviertel.',
+          behind: 'Wer wiederholt erlebt, „nicht dazuzugehören“ oder abgewertet zu werden, entwickelt Frustration, Wut und das Bedürfnis nach Selbstschutz und Aufwertung.',
+          prevention: 'Vorurteilsbewusste Pädagogik, konsequentes Eingreifen bei Mobbing/Rassismus, Stärkung von Zugehörigkeit und Anerkennung im Alltag.'
+        },
+        {
+          id: 'pp-2',
+          type: 'push',
+          title: 'Familiäre Krisen & Perspektivlosigkeit',
+          summary: 'Unsichere Bindungen, Gewalt im Elternhaus, Armut oder Angst vor sozialem Abstieg.',
+          behind: 'Wenn verlässliche Bezugspersonen fehlen oder die eigene Zukunft aussichtslos erscheint, entsteht ein starkes Bedürfnis nach Halt, Struktur und klaren Regeln.',
+          prevention: 'Verlässliche Beziehungsarbeit, enge Kooperation mit Jugendamt/Schulsozialarbeit, Aufzeigen realer Bildungs- und Berufsperspektiven.'
+        },
+        {
+          id: 'pp-3',
+          type: 'push',
+          title: 'Ohnmacht & Krisenüberforderung',
+          summary: 'Komplexe globale Krisen (Kriege, Inflation, Klimawandel) lösen Überforderung und Kontrollverlust aus.',
+          behind: 'Komplexe Probleme sind schwer auszuhalten. Jugendliche suchen nach jemandem, der „Schuld hat“ und einfache Erklärungen liefert.',
+          prevention: 'Gesprächsräume für Ängste schaffen, Medienkompetenz (Umgang mit Desinformation/TikTok) fördern und demokratische Selbstwirksamkeit erlebbar machen.'
+        },
+        {
+          id: 'pp-4',
+          type: 'pull',
+          title: 'Zugehörigkeit & „Familien“-Gefühl',
+          summary: 'Radikale Gruppen werben gezielt mit „Kameradschaft“, „Bruderschaft/Schwesternschaft“ oder bedingungsloser Solidarität.',
+          behind: 'Besonders in der Pubertät ist Peergroup-Akzeptanz zentral. Extremistische Gruppen nutzen gezielt „Love-Bombing“, um emotionale Bindung aufzubauen.',
+          prevention: 'Attraktive, demokratische Freizeit-, Sport- und Jugendkulturangebote schaffen, in denen junge Menschen echte Freundschaft und Wertschätzung erleben.'
+        },
+        {
+          id: 'pp-5',
+          type: 'pull',
+          title: 'Einfache Antworten & klare Identität',
+          summary: 'Strikte Regeln, feste Rollenbilder und Schwarz-Weiß-Weltbilder versprechen sofortige Orientierung.',
+          behind: 'Wer nach der eigenen Identität sucht („Wer bin ich?“), empfindet klare Gebote/Verbote und eindeutige Feindbilder zunächst als entlastend.',
+          prevention: 'Ambiguitätstoleranz (Mehrdeutigkeit aushalten) trainieren, Identitätssuche wertschätzend begleiten, über Rollenbilder und Vielfalt ins Gespräch kommen.'
+        },
+        {
+          id: 'pp-6',
+          type: 'pull',
+          title: 'Aufwertung, Abenteuer & Rebellion',
+          summary: 'Das Gefühl, „auserwählt“ zu sein, gegen „das System“ zu kämpfen und Teil von etwas Großem zu sein.',
+          behind: 'Jugendliche wollen ernst genommen werden und Grenzen austesten. Extremistische Propaganda inszeniert sich oft als mutige, coole Rebellion.',
+          prevention: 'Positive Formen von Engagement und Protest ermöglichen (z. B. Jugendprojekte, Beteiligung in Kommune/Schule), Verantwortungsübernahme fördern.'
+        }
+      ];
+
+      /** Daten für Modul 3.2: 4-Stufen-Prozess der Radikalisierung */
+      const radicalizationStages = {
+        1: {
+          title: 'Stufe 1: Verunsicherung, Sinnsuche & Offenheit',
+          color: 'text-petrol-800',
+          badge: 'Frühe Phase · Hoher Präventionsspielraum',
+          dynamics: 'Ausgelöst durch persönliche Krisen, Ausgrenzung, Identitätssuche oder Überforderung entsteht ein Vakuum. Der oder die Jugendliche sucht online (z. B. TikTok, YouTube, Gaming-Chats) oder im Umfeld nach Orientierung, Anerkennung und einfachen Erklärungen.',
+          signsKitaHort: 'Kinder bringen erste pauschale Urteile oder Sorgen aus dem Elternhaus mit; Gefühle von Ausgrenzung in der Gruppe.',
+          signsJugend: 'Wiederkehrende Frustration über „die Politik/Gesellschaft“, starker Konsum polarisierender Kurzvideos, Suche nach starken Autoritäten oder klaren Lebensregeln.',
+          action: 'Zuhören, Beziehung stärken, Medieninhalte gemeinsam kritisch hinterfragen (Medienkompetenz), demokratische Beteiligung und positive Peergroups anbieten.'
+        },
+        2: {
+          title: 'Stufe 2: Ansprache, Gruppenbindung & Zugehörigkeit',
+          color: 'text-amber-800',
+          badge: 'Kontaktphase · Gezieltes Eingreifen wirksam',
+          dynamics: 'Kontakte zu extremistischen Szenen, Online-Predigern oder lokalen Cliquen verfestigen sich. Die Gruppe vermittelt starkes Wir-Gefühl („Wir verstehen dich“) und beginnt, demokratische Werte subtil als „schwach“ oder „verlogen“ darzustellen.',
+          signsKitaHort: 'Eltern grenzen ihre Kinder zunehmend von interkulturellen Festen/Angeboten ab; Kinder wiederholen auffällige Codes oder abwertende Sprüche.',
+          signsJugend: 'Plötzlicher Wechsel von Kleidung, Sprache oder Codes; neue verschlossene Freundeskreise; erste provokante Aussagen gegen Minderheiten, Demokratie oder Gleichberechtigung.',
+          action: 'Gespräch suchen (ohne vorschnelle Stigmatisierung), klare Grenzen bei Abwertung setzen, kollegialen Austausch im Team starten und frühzeitig Fachberatung (z. B. MOBIT/VPN) kontaktieren.'
+        },
+        3: {
+          title: 'Stufe 3: Ideologische Verfestigung & Abschottung',
+          color: 'text-orange-800',
+          badge: 'Kritische Phase · Fachberatung dringend empfohlen',
+          dynamics: 'Die extremistische Ideologie wird zum zentralen Lebenssinn. Kontakte zu alten Freund*innen, Familie oder pädagogischen Einrichtungen werden abgebrochen, weil diese als „Systemlinge“, „Volksverräter“ oder „Ungläubige“ abgewertet werden.',
+          signsKitaHort: 'Massiver Konflikt mit radikalisierten Erziehungsberechtigten; offene völkische oder fundamentalistische Beeinflussung des Kindes; mögliche Kindeswohlgefährdung prüfen.',
+          signsJugend: 'Missionierungsdruck gegenüber Gleichaltrigen („Haram-Polizei“ / Einschüchterung), Verweigerung gemeinsamer Regeln, offene Verschwörungserzählungen, sozialer Rückzug aus bisherigen Angeboten.',
+          action: 'Strukturierter Hilfeplan mit Leitung, Träger und externen Distanzierungsstellen (z. B. Distanz e. V., Violence Prevention Network, Drudel 11). Schutz betroffener Kinder/Jugendlicher sicherstellen.'
+        },
+        4: {
+          title: 'Stufe 4: Radikale Handlung & Gewaltbereitschaft',
+          color: 'text-rose-800',
+          badge: 'Akutphase · Schutzauftrag & Kooperation',
+          dynamics: 'Die Ideologie rechtfertigt Gewalt als „notwendige Verteidigung“ oder „einzigen Ausweg“. Es drohen Übergriffe gegen Minderheiten, politische Gegner, Polizei, Sachbeschädigungen oder im Extremfall terroristische Handlungen.',
+          signsKitaHort: 'Konkrete Bedrohungen im Umfeld der Einrichtung, gewaltverherrlichende Übergriffe oder akute Gefährdung des Kindeswohls.',
+          signsJugend: 'Offene Gewaltlegitimation, Teilnahme an gewaltbereiten Aktionen, Besitz von Waffen/Propaganda, Ankündigung von Straftaten oder Ausreisepläne.',
+          action: 'Akute Gefahrenabwehr! Leitung/Träger informieren, bei konkreter Gefahr für Leib und Leben Polizei einschalten, Kinderschutzverfahren (§ 8a SGB VIII) prüfen und spezialisierte Ausstiegs-/Sicherheitsstrukturen einbinden.'
+        }
+      };
+
+      /** Daten für Modul 4: Praxis-Simulator (4 Fallstudien) */
+      const simulatorCases = [
+        {
+          id: 'case-1',
+          shortTitle: 'Fall 1: Kita & Rechtsextremismus',
+          setting: 'Kita · Elternarbeit',
+          category: 'Rechtsextremismus',
+          categoryColor: 'bg-amber-100 text-amber-900',
+          title: 'Abwertende Bemerkungen und Szenecodes in der Kita-Garderobe',
+          scenario: 'Beim Abholen in Ihrer Thüringer Kita erscheint der Vater eines 5-jährigen Kindes in einem Pullover mit eindeutigen rechtsextremen Zahlencodes und einer einschlägigen Szenemarke. Als ein anderes Kind mit Migrationsgeschichte im Flur lacht, sagt er laut und abwertend zu seinem Sohn: „Komm schnell, mit solchen Leuten spielen wir nicht – die gehören hier sowieso nicht her.“ Zwei Kinder und eine andere Mutter hören den Satz deutlich.',
+          options: [
+            {
+              key: 'A',
+              label: 'Ignorieren, um den Konflikt nicht eskalieren zu lassen',
+              text: 'Sie greifen nicht ein, weil Sie keinen Streit vor den Kindern riskieren wollen, und verweisen gedanklich auf Ihre Neutralitätspflicht gegenüber Eltern.',
+              rating: 'problematisch',
+              ratingLabel: 'Problematisch / Nicht empfohlen',
+              feedback: 'Schweigen wird in solchen Momenten sowohl von dem Vater als stille Zustimmung als auch von den anwesenden Kindern und der Mutter als fehlender Schutz erlebt. Das Neutralitätsgebot verbietet niemals Widerspruch gegen Rassismus – Art. 1 GG (Menschenwürde) und Ihr Schutzauftrag verpflichten zum Handeln.'
+            },
+            {
+              key: 'B',
+              label: 'Ruhig & klar widersprechen, Kinder schützen, im Team & mit Leitung weiterbearbeiten',
+              text: 'Sie sprechen den Vater ruhig, aber bestimmt an: „In unserer Kita behandeln wir alle Kinder und Familien mit Respekt. Solche abwertenden Aussagen dulden wir hier nicht.“ Anschließend wenden Sie sich zugewandt an die anwesenden Kinder, dokumentieren den Vorfall sachlich und besprechen mit Leitung/Team das weitere Vorgehen (inkl. Hausordnung & Beratung durch MOBIT e. V.).',
+              rating: 'professionell',
+              ratingLabel: 'Professionell & empfohlen',
+              feedback: 'Sehr gute pädagogische Reaktion! Sie ziehen unmittelbar eine klare Grenze ohne selbst aggressiv zu werden, schützen die betroffenen Kinder emotional in der Situation und handeln anschließend strukturiert im Team (Dokumentation, Gespräch durch Leitung, ggf. Prüfung der Hausordnung und fachliche Beratung durch MOBIT e. V.).'
+            },
+            {
+              key: 'C',
+              label: 'Lautstarke Grundsatzdiskussion im Flur starten',
+              text: 'Sie stellen den Vater sofort lautstark vor allen Kindern und Eltern bloß, werfen ihm vor ein Nazi zu sein und drohen ihm eigenmächtig mit der sofortigen Kündigung des Kita-Platzes.',
+              rating: 'verbesserungsfaehig',
+              ratingLabel: 'Verbesserungsfähig / Eskalationsrisiko',
+              feedback: 'Ihre Haltung gegen Rassismus ist richtig, aber die Umsetzung ist unprofessionell: Eine lautstarke Eskalation vor Kleinkindern verängstigt die Kinder (auch das Kind des Vaters!), und arbeits-/vertragsrechtliche Konsequenzen wie eine Platzkündigung dürfen nur durch Leitung/Träger geprüft werden – niemals spontan im Flur.'
+            }
+          ]
+        },
+        {
+          id: 'case-2',
+          shortTitle: 'Fall 2: Jugendclub & Islamismus',
+          setting: 'Offene Jugendarbeit · TikTok',
+          category: 'Islamismus',
+          categoryColor: 'bg-indigo-100 text-indigo-900',
+          title: 'Radikale Online-Prediger und Abwertung im Jugendclub',
+          scenario: 'Der 15-jährige Tariq besucht seit zwei Jahren regelmäßig Ihren Jugendclub. Seit einigen Wochen zieht er sich aus gemeinsamen Aktivitäten zurück, schaut stundenlang Clips radikaler Online-Prediger auf TikTok und erklärt plötzlich in einer Gesprächsrunde, Mädchen dürften nicht mit Jungen im gleichen Raum kickern und Demokratie sowie Wahlen seien „haram“ (verboten). Ein Mädchen aus der Gruppe fühlt sich stark eingeschüchtert.',
+          options: [
+            {
+              key: 'A',
+              label: 'Sofortiges Hausverbot und Religionskritik',
+              text: 'Sie erteilen Tariq sofort ein unbefristetes Hausverbot und erklären ihm, dass Religion im Jugendclub ab sofort generell nichts mehr zu suchen habe.',
+              rating: 'problematisch',
+              ratingLabel: 'Problematisch / Nicht empfohlen',
+              feedback: 'Ein vorschneller Ausschluss kappt die letzte pädagogische Beziehung und treibt Tariq genau in die Isolation der Online-Szene (Bestätigung des Opfermythos). Zudem verwechselt ein pauschales Religionsverbot Islam (geschützte Religion) mit Islamismus (politische Ideologie).'
+            },
+            {
+              key: 'B',
+              label: 'Grenze ziehen, Mädchen stärken, Gespräch suchen & Fachberatung einbinden',
+              text: 'Sie widersprechen sofort klar der Abwertung: „Bei uns gelten Gleichberechtigung und gegenseitiger Respekt für alle – Mädchen haben hier genau dieselben Rechte.“ Sie stärken das betroffene Mädchen, bieten Tariq später ein ruhiges Einzelgespräch an (um seine Motive & TikTok-Quellen zu verstehen), informieren Ihr Team und holen vertrauliche Fachberatung bei der Beratungsstelle Thüringen (Violence Prevention Network) ein.',
+              rating: 'professionell',
+              ratingLabel: 'Professionell & empfohlen',
+              feedback: 'Hervorragend gehandelt! Sie verbinden klare Grenzziehung zum Schutz der anderen Jugendlichen mit professioneller Beziehungsarbeit. Durch die Unterscheidung zwischen religiöser Suche und menschenfeindlicher Ideologie halten Sie den Kontakt zu Tariq und holen sich spezialisierte Expertise (VPN Thüringen) ins Boot.'
+            },
+            {
+              key: 'C',
+              label: 'Theologische Debatte über den Koran führen',
+              text: 'Sie lassen die Aussage gegenüber dem Mädchen erst einmal stehen und versuchen stattdessen eine halbe Stunde lang, Tariq mit eigenen Koran-Zitaten theologisch zu widerlegen.',
+              rating: 'verbesserungsfaehig',
+              ratingLabel: 'Verbesserungsfähig / Fachliche Falle',
+              feedback: 'Erstens bleibt das eingeschüchterte Mädchen zunächst ohne unmittelbaren Schutz. Zweitens sind pädagogische Fachkräfte keine Theolog*innen: Auf religiöse Detaildebatten lassen sich radikalisierte Jugendliche oft nicht ein oder nutzen sie zur Profilierung. Wirksamer sind klare Hausregeln, Menschenrechte und die Frage nach den persönlichen Bedürfnissen hinter den Videos.'
+            }
+          ]
+        },
+        {
+          id: 'case-3',
+          shortTitle: 'Fall 3: Wohngruppe & Linksextremismus',
+          setting: 'Stationäre Jugendhilfe · Gewaltmonopol',
+          category: 'Linksextremismus',
+          categoryColor: 'bg-rose-100 text-rose-900',
+          title: 'Rechtfertigung von Gewalt gegen Polizist*innen in der Wohngruppe',
+          scenario: 'Die 16-jährige Mara lebt in Ihrer Jugendwohngruppe. Sie engagiert sich seit kurzem in einer militanten autonomen Gruppe. Beim Abendessen erzählt sie stolz von einer nächtlichen Aktion mit Sachbeschädigung und sagt vor den jüngeren Bewohner*innen: „Demokratie ist sowieso nur Show für Reiche. Wer was ändern will, muss Bullen angreifen – Gewalt gegen den Staat ist legitimer Widerstand!“',
+          options: [
+            {
+              key: 'A',
+              label: 'Gewalt klar ablehnen, politischen Frust ernst nehmen & Rechtsstaat thematisieren',
+              text: 'Sie widersprechen der Gewaltverherrlichung eindeutig: „Ich verstehe, dass du wütend über soziale Ungerechtigkeit bist – darüber können wir jederzeit streiten. Aber Gewalt gegen Menschen, auch gegen Polizist*innen, und Straftaten akzeptiere ich nicht.“ Im Einzelgespräch erkunden Sie, was Mara sucht, thematisieren den Unterschied zwischen demokratischem Protest und Gewalt und besprechen das Risiko im Team (inkl. Einbezug von Leitung/Bezugsbetreuung).',
+              rating: 'professionell',
+              ratingLabel: 'Professionell & empfohlen',
+              feedback: 'Professionell und differenziert! Sie erkennen Maras berechtigtes Bedürfnis nach Gerechtigkeit und politischer Teilhabe an (Adressatenorientierung), ziehen aber beim Gewaltmonopol und bei Gewalt gegen Menschen eine glasklare Grenze. Gleichzeitig schützen Sie die jüngeren Jugendlichen vor Nachahmung und steuern das Thema im Team weiter.'
+            },
+            {
+              key: 'B',
+              label: 'Verständnis für die „gute Sache“ signalisieren',
+              text: 'Sie sagen: „Naja, gegen soziale Ungerechtigkeit und Rechtsextremismus muss man manchmal eben auch härtere Mittel einsetzen, pass nur auf, dass du nicht erwischt wirst.“',
+              rating: 'problematisch',
+              ratingLabel: 'Problematisch / Nicht empfohlen',
+              feedback: 'Damit legitimieren Sie Straftaten und Gewalt gegen das staatliche Gewaltmonopol. Ein vermeintlich „guter Zweck“ heiligt im Rechtsstaat niemals Gewalt gegen Menschen oder die Abschaffung der Demokratie. Sie verletzen damit Ihre Vorbild- und Aufsichtspflicht.'
+            },
+            {
+              key: 'C',
+              label: 'Politisches Engagement pauschal verbieten',
+              text: 'Sie untersagen Mara ab sofort jede politische Diskussion in der Wohngruppe und verbieten ihr auch die Teilnahme an angemeldeten, friedlichen Demonstrationen.',
+              rating: 'verbesserungsfaehig',
+              ratingLabel: 'Verbesserungsfähig / Kontraproduktiv',
+              feedback: 'Politisches Engagement und friedliche Demonstrationen sind durch das Grundgesetz geschützt und für Jugendliche wichtige Lernfelder. Ein pauschales Politikverbot schürt Trotz und bestätigt das extremistische Narrativ vom „repressiven System“. Besser: Gewalt klar ablehnen, aber legale, demokratische Engagementformen aufzeigen.'
+            }
+          ]
+        },
+        {
+          id: 'case-4',
+          shortTitle: 'Fall 4: Hort & Alltagsrassismus',
+          setting: 'Grundschulhort · Kinderalltag',
+          category: 'Alltagsrassismus / Prävention',
+          categoryColor: 'bg-teal-100 text-teal-900',
+          title: 'Kind gibt abwertende Parolen aus dem Elternhaus weiter',
+          scenario: 'Auf dem Schulhof des Horts ruft der 8-jährige Lukas beim Fußballspiel zu einem Mitschüler mit dunkler Hautfarbe: „Du darfst nicht ins Tor, mein Papa sagt, Ausländer nehmen uns sowieso alles weg und gehören abgeschoben!“ Der Mitschüler zieht sich verletzt zurück; einige andere Kinder lachen verunsichert.',
+          options: [
+            {
+              key: 'A',
+              label: 'Lukas als „Rassisten“ abstempeln und vor der Klasse bestrafen',
+              text: 'Sie rufen laut über den Hof: „Lukas, das ist rassistisch, schäm dich! Du bist jetzt drei Tage vom Fußball ausgeschlossen, weil dein Vater dir so einen Quatsch beibringt!“',
+              rating: 'verbesserungsfaehig',
+              ratingLabel: 'Verbesserungsfähig / Beschämend für das Kind',
+              feedback: 'Zwar ist sofortiges Eingreifen wichtig, doch ein 8-jähriges Kind übernimmt Parolen oft unreflektiert aus Loyalität zu den Eltern. Öffentliche Beschämung und Abwertung des Vaters bringen Lukas in einen schweren Loyalitätskonflikt und verhindern echtes Lernen.'
+            },
+            {
+              key: 'B',
+              label: 'Sofort stoppen, betroffenes Kind stärken, kindgerecht aufklären & Elterngespräch planen',
+              text: 'Sie unterbrechen sofort ruhig: „Stopp! Solche Sprüche verletzen und gehören nicht auf unseren Schulhof. Hier darf jedes Kind mitspielen.“ Sie trösten und stärken den betroffenen Mitschüler, sprechen mit Lukas altersgerecht unter vier Augen (Empathie wecken, ohne seinen Vater zu beschimpfen) und planen im Team ein sachliches Elterngespräch sowie vorurteilsbewusste Gruppenprojekte.',
+              rating: 'professionell',
+              ratingLabel: 'Professionell & empfohlen',
+              feedback: 'Vorbildlich! Sie setzen sofort eine klare, verständliche Regel für alle Kinder, nehmen den Schutz des betroffenen Kindes ernst und trennen bei Lukas zwischen der verletzenden Aussage und der Person des 8-Jährigen. Das geplante Elterngespräch und Gruppenangebote wirken nachhaltig präventiv.'
+            },
+            {
+              key: 'C',
+              label: 'Abwarten, weil Kinder „das ja noch nicht ernst meinen“',
+              text: 'Sie greifen nicht ein, weil 8-Jährige die politischen Begriffe noch gar nicht richtig verstehen und sich beim Spielen schnell wieder vertragen.',
+              rating: 'problematisch',
+              ratingLabel: 'Problematisch / Nicht empfohlen',
+              feedback: 'Auch wenn Lukas die politische Tragweite nicht voll überschaut, ist die verletzende Wirkung für den ausgegrenzten Mitschüler absolut real! Wegsehen signalisiert der ganzen Gruppe, dass Ausgrenzung erlaubt ist, und verpasst eine zentrale Chance der Demokratiebildung.'
+            }
+          ]
+        }
+      ];
+
+      /** Daten für Modul 5.1: Zuordnungsübung (9 Aussagen -> 4 Kategorien) */
+      const sortingItems = [
+        {
+          id: 'sort-1',
+          statement: '„Deutschland darf nur ethnisch Deutschen gehören – Menschen mit Migrationsgeschichte müssen das Land verlassen.“',
+          correct: 'rechts',
+          explanation: 'Typisch rechtsextremistisch: Völkischer Nationalismus und Ideologie der Ungleichwertigkeit (Verstoß gegen Art. 1 GG).'
+        },
+        {
+          id: 'sort-2',
+          statement: '„Polizist*innen sind Werkzeuge eines Unterdrückungssystems – militante Angriffe auf sie sind legitimer Widerstand.“',
+          correct: 'links',
+          explanation: 'Typisch linksextremistisch: Ablehnung des staatlichen Gewaltmonopols und Legitimation von Gewalt gegen Sicherheitsbehörden.'
+        },
+        {
+          id: 'sort-3',
+          statement: '„Demokratische Gesetze von Menschen sind ungültig – allein Gottes Gesetz in Form einer strengen Scharia darf herrschen.“',
+          correct: 'islamismus',
+          explanation: 'Typisch islamistisch: Ablehnung der Volkssouveränität und Überordnung einer politisierten Scharia über das Grundgesetz.'
+        },
+        {
+          id: 'sort-4',
+          statement: '„Ich faste im Ramadan, gehe freitags in die Moschee und wünsche mir im Hort eine vegetarische Essensoption.“',
+          correct: 'demokratisch',
+          explanation: 'Demokratisch / Nicht extremistisch: Friedliche Religionsausübung ist ein Grundrecht nach Art. 4 GG – kein Islamismus!'
+        },
+        {
+          id: 'sort-5',
+          statement: '„Wir fordern höhere Steuern für Superreiche, einen Mietendeckel und demonstrieren friedlich gegen Kürzungen in der Jugendhilfe.“',
+          correct: 'demokratisch',
+          explanation: 'Demokratisch / Nicht extremistisch: Soziale Kritik und friedliche Demonstrationen gehören zum demokratischen Pluralismus.'
+        },
+        {
+          id: 'sort-6',
+          statement: '„Auf TikTok wird verbreitet, dass Frauen nicht gleichberechtigt arbeiten oder wählen dürfen und jeder Kontakt zu ‚Ungläubigen‘ verboten sei.“',
+          correct: 'islamismus',
+          explanation: 'Typisch islamistisch (salafistisch geprägt): Ablehnung von Gleichberechtigung, Abschottung und religiös begründete Abwertung.'
+        },
+        {
+          id: 'sort-7',
+          statement: '„Geheime globale Eliten steuern angeblich einen ‚großen Austausch‘ der Bevölkerung – demokratische Wahlen seien nur Betrug.“',
+          correct: 'rechts',
+          explanation: 'Typisch rechtsextremistisch: Völkische Verschwörungserzählung („Großer Austausch“) verbunden mit Delegitimierung der Demokratie.'
+        },
+        {
+          id: 'sort-8',
+          statement: '„Das parlamentarische System muss durch eine revolutionäre Einparteienherrschaft ohne freie Wahlen ersetzt werden.“',
+          correct: 'links',
+          explanation: 'Typisch linksextremistisch (dogmatischer Marxismus-Leninismus): Ziel ist die Abschaffung von Mehrparteiensystem und FDGO.'
+        },
+        {
+          id: 'sort-9',
+          statement: '„In unserer Kita gestalten Kinder beim wöchentlichen Kinderparlament Regeln mit und engagieren sich gegen Ausgrenzung.“',
+          correct: 'demokratisch',
+          explanation: 'Demokratisch / Nicht extremistisch: Gelebte Partizipation und Demokratiebildung im Sinne des Thüringer Bildungsplans.'
+        }
+      ];
+
+      /** Daten für Modul 5.2: Multiple-Choice-Quiz (8 Fragen) */
+      const quizQuestions = [
+        {
+          id: 'q1',
+          question: 'Welche drei Kernprinzipien bilden nach dem Bundesverfassungsgericht das Fundament der Freiheitlich-demokratischen Grundordnung (FDGO)?',
+          options: [
+            'Wirtschaftswachstum, Schulpflicht und Ehrenamt',
+            'Menschenwürde (Art. 1 GG), Demokratieprinzip und Rechtsstaatsprinzip',
+            'Religionsverbot, Parteienpflicht und Zentralstaat',
+            'Absolute Meinungsfreiheit ohne Grenzen, Selbstjustiz und Volksabstimmung'
+          ],
+          correct: 1,
+          explanation: 'Richtig! Menschenwürde (Art. 1 GG), Demokratieprinzip (Volkssouveränität, freie Wahlen) und Rechtsstaatsprinzip (Gewaltenteilung, Gesetzbindung, Gewaltmonopol) sind die unantastbaren Kernpfeiler der FDGO.'
+        },
+        {
+          id: 'q2',
+          question: 'Was unterscheidet politischen Radikalismus von Extremismus?',
+          options: [
+            'Radikalismus betrifft immer nur Jugendliche, Extremismus nur Erwachsene.',
+            'Es gibt keinen Unterschied – beide Begriffe bedeuten exakt dasselbe.',
+            'Radikalismus übt tiefgreifende Kritik innerhalb der FDGO; Extremismus will die FDGO abschaffen.',
+            'Extremismus ist immer gewaltfrei, Radikalismus immer gewalttätig.'
+          ],
+          correct: 2,
+          explanation: 'Genau! Radikale Positionen können sehr zugespitzt sein, bewegen sich aber noch auf dem Boden des Grundgesetzes. Extremismus überschreitet die Verfassungsgrenze und bekämpft die FDGO.'
+        },
+        {
+          id: 'q3',
+          question: 'Was bedeutet das „Neutralitätsgebot“ für Erzieher*innen im Sinne des Beutelsbacher Konsenses?',
+          options: [
+            'Erzieher*innen müssen bei rassistischen oder menschenfeindlichen Aussagen schweigen, um neutral zu bleiben.',
+            'Parteipolitische Zurückhaltung im Dienst – aber klare Haltung FÜR Demokratie und GEGEN Menschenfeindlichkeit.',
+            'Erzieher*innen dürfen mit Kindern und Jugendlichen gar nicht über politische oder gesellschaftliche Themen sprechen.',
+            'Alle Meinungen – auch Gewaltaufrufe – müssen völlig gleichberechtigt im Raum stehen bleiben.'
+          ],
+          correct: 1,
+          explanation: 'Korrekt! Das Neutralitätsgebot verbietet parteipolitische Werbung und Überwältigung, verlangt aber ausdrücklich ein Eintreten für die Menschenwürde und die Grundwerte der Verfassung.'
+        },
+        {
+          id: 'q4',
+          question: 'Wie grenzen pädagogische Fachkräfte den „Islam“ fachlich korrekt vom „Islamismus“ ab?',
+          options: [
+            'Islam ist eine friedliche, durch Art. 4 GG geschützte Weltreligion; Islamismus ist eine antidemokratische politische Ideologie.',
+            'Jede streng religiöse Praxis wie Fasten oder Kopftuchtragen ist automatisch Islamismus.',
+            'Islamismus ist lediglich die moderne Jugendform des Islam auf TikTok.',
+            'Islamismus lehnt nur Gewalt ab, akzeptiert aber das Grundgesetz vollständig.'
+          ],
+          correct: 0,
+          explanation: 'Richtig! Diese Trennung ist entscheidend, um einerseits antimuslimischen Rassismus zu vermeiden und andererseits demokratiefeindliche Ideologien klar zu benennen.'
+        },
+        {
+          id: 'q5',
+          question: 'Welches Merkmal zählt zu den strukturellen Gemeinsamkeiten ALLER Extremismusformen (Rechts, Links, Islamismus)?',
+          options: [
+            'Die Forderung nach einer ethnisch homogenen Volksgemeinschaft',
+            'Schwarz-Weiß-Denken, Absolutheitsanspruch und Ablehnung von Pluralismus',
+            'Die Verbreitung religiöser Gebote über TikTok-Prediger',
+            'Die Unterstützung demokratischer Kompromisse im Parlament'
+          ],
+          correct: 1,
+          explanation: 'Stimmt! Trotz unterschiedlicher Inhalte teilen alle Extremismusformen ein starres Freund-Feind-Weltbild, Absolutheitsansprüche, Verschwörungserzählungen und die Ablehnung von Vielfalt.'
+        },
+        {
+          id: 'q6',
+          question: 'Was gehört bei der Entstehung von Radikalisierung zu den sogenannten „Pull-Faktoren“?',
+          options: [
+            'Familiäre Krisen, Armut und schulische Ausgrenzung',
+            'Verlockende Angebote radikaler Gruppen wie Zugehörigkeit, einfache Antworten und Aufwertung',
+            'Demokratische Mitbestimmung im Kita-Rat',
+            'Gesetzliche Regelungen im Jugendhilferecht'
+          ],
+          correct: 1,
+          explanation: 'Richtig! Push-Faktoren sind Belastungen, die junge Menschen „wegdrücken“ (z. B. Ausgrenzung); Pull-Faktoren sind Anreize radikaler Gruppen, die sie „hineinziehen“ (z. B. Gemeinschaft, Sinn, Abenteuer).'
+        },
+        {
+          id: 'q7',
+          question: 'Ein 16-Jähriger im Jugendclub äußert erstmals radikale Parolen. Welcher pädagogische Grundsatz ist besonders wichtig?',
+          options: [
+            'Sofortiger dauerhafter Ausschluss ohne Gespräch, damit die Gruppe rein bleibt.',
+            'Die Aussage ignorieren, da sich das Problem in der Pubertät von allein erledigt.',
+            'Klare Haltung gegen die Abwertung zeigen, aber den Gesprächskanal zur Person offenhalten und Team/Fachberatung einbeziehen.',
+            'Den Fall heimlich allein lösen, ohne die Leitung zu informieren.'
+          ],
+          correct: 2,
+          explanation: 'Sehr gut! „Hart in der Sache, zugewandt zur Person“: Klare Grenzziehung schützt andere Jugendliche, während Beziehungsarbeit und Fachberatung helfen, Radikalisierung frühzeitig zu stoppen.'
+        },
+        {
+          id: 'q8',
+          question: 'Welche Aussage zum Linksextremismus trifft fachlich zu?',
+          options: [
+            'Jede Kritik an sozialer Ungleichheit oder jedes Engagement gegen Rechtsextremismus ist linksextremistisch.',
+            'Linksextremismus richtet sich gegen die parlamentarische Demokratie, den Rechtsstaat und das staatliche Gewaltmonopol.',
+            'Linksextremismus existiert in der Bundesrepublik nur historisch und hat keine aktuellen Erscheinungsformen.',
+            'Linksextremistische Gruppen erkennen das staatliche Gewaltmonopol uneingeschränkt an.'
+          ],
+          correct: 1,
+          explanation: 'Korrekt! Demokratisches linkes und antifaschistisches Engagement ist völlig legitim. Linksextremismus beginnt dort, wo Rechtsstaat, parlamentarische Demokratie und Gewaltmonopol bekämpft werden.'
+        }
+      ];
+
+      /** Daten für Modul 6.1: 5 Schritte im Verdachtsfall */
+      const emergencySteps = [
+        {
+          id: 'step-1',
+          num: 'Schritt 1',
+          title: 'Ruhe bewahren, klar widersprechen & Betroffene schützen',
+          detail: 'Bei akuten abwertenden Aussagen oder Übergriffen sofort eine klare Grenze ziehen, betroffene Kinder/Jugendliche schützen und nicht selbst eskalieren.'
+        },
+        {
+          id: 'step-2',
+          num: 'Schritt 2',
+          title: 'Beobachtungen zeitnah und sachlich dokumentieren',
+          detail: 'W-Fragen notieren (Was wurde gesagt/getan? Wann? Wer war anwesend?). Konkrete Fakten und Zitate sauber von eigenen Vermutungen trennen.'
+        },
+        {
+          id: 'step-3',
+          num: 'Schritt 3',
+          title: 'Kollegiale Fallberatung im Team & Leitung informieren',
+          detail: 'Niemals allein handeln! Beobachtungen im Team abgleichen, Einrichtungsleitung und ggf. Träger einbinden, um eine gemeinsame Haltung zu entwickeln.'
+        },
+        {
+          id: 'step-4',
+          num: 'Schritt 4',
+          title: 'Externe Fachberatung vertraulich & kostenfrei nutzen',
+          detail: 'Frühzeitig spezialisierte Thüringer Beratungsstellen (z. B. MOBIT, VPN, Distanz e. V.) hinzuziehen – auch schon bei Unsicherheit oder ersten Warnsignalen.'
+        },
+        {
+          id: 'step-5',
+          num: 'Schritt 5',
+          title: 'Handlungsplan umsetzen & Kinderschutz prüfen (§ 8a SGB VIII)',
+          detail: 'Konkrete pädagogische Schritte, Elterngespräche oder Gruppenangebote festlegen. Bei Hinweisen auf Kindeswohlgefährdung das gesetzliche Schutzverfahren einleiten.'
+        }
+      ];
+
+      /** Daten für Modul 6.2: Thüringer & bundesweite Beratungsstellen */
+      const networkContacts = [
+        {
+          name: 'DenkBunt – Landesdemokratiezentrum Thüringen',
+          categories: ['demokratie', 'rechts', 'islamismus'],
+          badge: 'Koordinierung & Landesprogramm',
+          badgeClass: 'bg-petrol-100 text-petrol-900',
+          desc: 'Zentrale Koordinierungsstelle des Thüringer Landesprogramms für Demokratie, Toleranz und Weltoffenheit. Vernetzt die Thüringer Beratungsstrukturen und informiert über Förder- und Bildungsangebote.',
+          target: 'Fachkräfte, Träger, Kommunen & Zivilgesellschaft',
+          contact: 'Web: denkbunt-thueringen.de'
+        },
+        {
+          name: 'MOBIT e. V. – Mobile Beratung in Thüringen',
+          categories: ['rechts', 'demokratie'],
+          badge: 'Rechtsextremismus · Mobile Beratung',
+          badgeClass: 'bg-amber-100 text-amber-900',
+          desc: 'Kostenfreie, vertrauliche Beratung vor Ort für Kitas, Schulen, Jugendhilfe und Kommunen im Umgang mit Rechtsextremismus, völkischen Eltern, Codes und rechten Vorfällen. Bietet auch Fortbildungen.',
+          target: 'Pädagog*innen, Einrichtungen, Teams & Initiativen',
+          contact: 'Tel: 0361 2192694 · mail@mobit.org · mobit.org'
+        },
+        {
+          name: 'Violence Prevention Network – Beratungsstelle Thüringen',
+          categories: ['islamismus'],
+          badge: 'Islam & Islamismusprävention',
+          badgeClass: 'bg-indigo-100 text-indigo-900',
+          desc: 'Fachberatung, Fallbegleitung und Fortbildungen in den Themenfeldern Islam, religiös begründeter Extremismus / Islamismus und Islamfeindlichkeit in Thüringen.',
+          target: 'Pädagogische Fachkräfte, Jugendliche & Angehörige',
+          contact: 'Tel: 0361 30 26 20 31 · thueringen@violence-prevention-network.de'
+        },
+        {
+          name: 'Distanz e. V. – Zentrum für Distanzierungsarbeit (ZfD)',
+          categories: ['rechts'],
+          badge: 'Jugendhilfe & Distanzierung',
+          badgeClass: 'bg-amber-100 text-amber-900',
+          desc: 'Spezialisiert auf Distanzierungstrainings für junge Menschen mit rechtsextremen Orientierungen sowie Beratung, Coaching und Qualifizierung für Fachkräfte der Jugendhilfe in Thüringen.',
+          target: 'Jugendhilfe, Fachkräfte & Jugendliche',
+          contact: 'Tel: 03643 8788187 · mail@distanz.info · distanz.info'
+        },
+        {
+          name: 'Drudel 11 e. V. – Thüringer Beratungsdienst',
+          categories: ['rechts'],
+          badge: 'Ausstiegsberatung',
+          badgeClass: 'bg-amber-100 text-amber-900',
+          desc: 'Vertrauliche Ausstiegsberatung für Menschen, die sich aus der rechtsextremen Szene lösen möchten, sowie Fachberatung für Angehörige und pädagogisches Personal.',
+          target: 'Ausstiegswillige, Angehörige & Fachpersonal',
+          contact: 'Tel: 03641 299074 · info@ausstieg-aus-gewalt.de · ausstieg-aus-gewalt.de'
+        },
+        {
+          name: 'ezra / re:solut e. V.',
+          categories: ['demokratie', 'rechts'],
+          badge: 'Betroffenenberatung',
+          badgeClass: 'bg-emerald-100 text-emerald-900',
+          desc: 'Mobile, solidarische und kostenfreie Beratung für Betroffene, Angehörige und Zeug*innen rechter, rassistischer und antisemitischer Gewalt in Thüringen (psychosozial & rechtlich begleitend).',
+          target: 'Betroffene, Familien, Zeug*innen & Fachkräfte',
+          contact: 'Tel: 0361 21865133 · info@ezra.de · ezra.de'
+        },
+        {
+          name: 'Landeszentrale für politische Bildung Thüringen (LZT)',
+          categories: ['demokratie'],
+          badge: 'Bildungsmaterial & Publikationen',
+          badgeClass: 'bg-teal-100 text-teal-900',
+          desc: 'Stellt kostenfreie bzw. kostengünstige Fachbücher, Unterrichtsmaterialien, Broschüren und Veranstaltungen zu Demokratie, Extremismus und Zeitgeschichte in Thüringen bereit.',
+          target: 'Auszubildende, Lehrkräfte, Erzieher*innen & Bürger*innen',
+          contact: 'Web: lzt-thueringen.de'
+        },
+        {
+          name: 'BAMF – Beratungsstelle Radikalisierung',
+          categories: ['islamismus'],
+          badge: 'Bundesweite Erstberatung',
+          badgeClass: 'bg-indigo-100 text-indigo-900',
+          desc: 'Bundesweite telefonische Erstberatung (mehrsprachig, kostenfrei, vertraulich) bei Verdacht auf islamistische Radikalisierung – vermittelt bei Bedarf direkt an regionale Partner vor Ort weiter.',
+          target: 'Eltern, Lehrkräfte, Erzieher*innen & Umfeld',
+          contact: 'Tel: 0911 943 43 43 · bamf.de'
+        }
+      ];
+
+      /* ===============================================================
+         2. ANWENDUNGSZUSTAND (STATE) & PERSISTENZ
+         =============================================================== */
+      const STORAGE_KEY = 'thueringen_extremismus_lernplattform_v1';
+
+      function getInitialState() {
+        return {
+          activeModule: 1,
+          completedModules: [1], // Modul 1 startet als besucht/aktiv
+          activeCaseId: 'case-1',
+          solvedCases: {},       // { 'case-1': 'B', ... }
+          sortingAnswers: {},    // { 'sort-1': 'rechts', ... }
+          quizAnswers: {},       // { 'q1': 1, ... }
+          checkedSteps: {}       // { 'step-1': true, ... }
+        };
+      }
+
+      let state = getInitialState();
+
+      /** Sicherer Zugriff auf localStorage (mit try/catch für Sandbox-iFrames) */
+      function loadState() {
+        try {
+          const saved = localStorage.getItem(STORAGE_KEY);
+          if (saved) {
+            const parsed = JSON.parse(saved);
+            state = Object.assign(getInitialState(), parsed);
+          }
+        } catch (err) {
+          // Fallback: reiner In-Memory-Zustand ohne Absturz
+        }
+      }
+
+      function saveState() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        } catch (err) {
+          // Ignorieren, falls Storage in Sandbox gesperrt ist
+        }
+      }
+
+      /* ===============================================================
+         3. HILFSFUNKTIONEN (TOAST & FORTSCHRITT)
+         =============================================================== */
+      function showToast(message, tone) {
+        const container = document.getElementById('toast-container');
+        if (!container) return;
+
+        const toast = document.createElement('div');
+        const toneClasses = tone === 'success'
+          ? 'bg-emerald-800 text-white border-emerald-700'
+          : 'bg-petrol-900 text-white border-petrol-800';
+
+        toast.className = `pointer-events-auto px-4 py-3 rounded-xl shadow-lg border text-sm font-medium flex items-center gap-2 animate-fade-in ${toneClasses}`;
+        toast.textContent = message;
+        container.appendChild(toast);
+
+        setTimeout(() => {
+          toast.style.opacity = '0';
+          toast.style.transition = 'opacity 0.3s ease';
+          setTimeout(() => toast.remove(), 320);
+        }, 3000);
+      }
+
+      /** Berechnet und aktualisiert Fortschrittsbalken, Zähler und Tab-Status live */
+      function updateGlobalProgress() {
+        // 1. Module (max 6)
+        const modulesDone = state.completedModules.length;
+
+        // 2. Gelöste Praxisfälle (max 4)
+        const casesDone = Object.keys(state.solvedCases).length;
+
+        // 3. Wissenscheck Punkte (9 Zuordnung + 8 Quiz = 17)
+        let sortingCorrect = 0;
+        sortingItems.forEach(item => {
+          if (state.sortingAnswers[item.id] === item.correct) sortingCorrect++;
+        });
+        const sortingAnswered = Object.keys(state.sortingAnswers).length;
+
+        let quizCorrect = 0;
+        quizQuestions.forEach(q => {
+          if (state.quizAnswers[q.id] === q.correct) quizCorrect++;
+        });
+        const quizAnswered = Object.keys(state.quizAnswers).length;
+
+        const totalPoints = sortingCorrect + quizCorrect;
+
+        // 4. Gesamtfortschritt gewichtet (Module: 6, Fälle: 4, Zuordnung bearbeitet: 9, Quiz bearbeitet: 8, Checkliste: 5 -> Summe 32 Aktionen)
+        const stepsChecked = Object.values(state.checkedSteps).filter(Boolean).length;
+        const totalActivities = 6 + 4 + 9 + 8 + 5;
+        const doneActivities = modulesDone + casesDone + sortingAnswered + quizAnswered + stepsChecked;
+        const percent = Math.min(100, Math.round((doneActivities / totalActivities) * 100));
+
+        // DOM aktualisieren
+        const elPercent = document.getElementById('header-progress-percent');
+        const elBar = document.getElementById('header-progress-bar');
+        const elStatMod = document.getElementById('stat-modules');
+        const elStatCases = document.getElementById('stat-cases');
+        const elStatQuiz = document.getElementById('stat-quiz');
+        const elSimText = document.getElementById('simulator-progress-text');
+        const elMod5Total = document.getElementById('mod5-total-score');
+        const elSortScore = document.getElementById('sorting-score');
+        const elQuizScore = document.getElementById('quiz-score');
+        const elCheckStatus = document.getElementById('checklist-status');
+        const elPrintStats = document.getElementById('print-summary-stats');
+
+        if (elPercent) elPercent.textContent = `${percent} %`;
+        if (elBar) elBar.style.width = `${percent}%`;
+        if (elStatMod) elStatMod.textContent = `${modulesDone}/6`;
+        if (elStatCases) elStatCases.textContent = `${casesDone}/4`;
+        if (elStatQuiz) elStatQuiz.textContent = `${totalPoints}/17`;
+        if (elSimText) elSimText.textContent = `${casesDone} von 4`;
+        if (elMod5Total) elMod5Total.textContent = `${totalPoints} von 17`;
+        if (elSortScore) elSortScore.textContent = String(sortingCorrect);
+        if (elQuizScore) elQuizScore.textContent = String(quizCorrect);
+        if (elCheckStatus) elCheckStatus.textContent = `${stepsChecked} / 5 geprüft`;
+        if (elPrintStats) {
+          elPrintStats.textContent = `${percent} % abgeschlossen (${modulesDone}/6 Module, ${casesDone}/4 Praxisfälle, ${totalPoints}/17 Punkte im Wissenscheck)`;
+        }
+
+        // Modul-Tabs mit Häkchen markieren, wenn abgeschlossen
+        document.querySelectorAll('.module-tab').forEach(tab => {
+          const modNum = Number(tab.dataset.module);
+          const isActive = modNum === state.activeModule;
+          const isDone = state.completedModules.includes(modNum);
+          const badge = tab.querySelector('.tab-num');
+
+          if (isActive) {
+            tab.className = 'module-tab shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition min-h-[42px] bg-petrol-900 text-white shadow-sm';
+            tab.setAttribute('aria-selected', 'true');
+            if (badge) {
+              badge.className = 'tab-num w-5 h-5 rounded-full bg-white/25 text-white flex items-center justify-center text-xs font-bold';
+              badge.textContent = isDone && modNum !== state.activeModule ? '✓' : String(modNum);
+            }
+          } else {
+            tab.className = 'module-tab shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition min-h-[42px] text-slate-700 hover:bg-slate-100';
+            tab.setAttribute('aria-selected', 'false');
+            if (badge) {
+              if (isDone) {
+                badge.className = 'tab-num w-5 h-5 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center text-xs font-bold';
+                badge.textContent = '✓';
+              } else {
+                badge.className = 'tab-num w-5 h-5 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center text-xs font-bold';
+                badge.textContent = String(modNum);
+              }
+            }
+          }
+        });
+
+        saveState();
+      }
+
+      /* ===============================================================
+         4. MODUL-NAVIGATION
+         =============================================================== */
+      function switchModule(modNum, markPreviousComplete) {
+        const target = Number(modNum);
+        if (target < 1 || target > 6) return;
+
+        if (markPreviousComplete && !state.completedModules.includes(state.activeModule)) {
+          state.completedModules.push(state.activeModule);
+        }
+        if (!state.completedModules.includes(target)) {
+          state.completedModules.push(target);
+        }
+
+        state.activeModule = target;
+
+        document.querySelectorAll('.module-panel').forEach(panel => {
+          panel.classList.add('hidden');
+        });
+        const activePanel = document.getElementById(`panel-mod-${target}`);
+        if (activePanel) {
+          activePanel.classList.remove('hidden');
+          activePanel.classList.remove('animate-fade-in');
+          // Animation neu auslösen
+          void activePanel.offsetWidth;
+          activePanel.classList.add('animate-fade-in');
+        }
+
+        updateGlobalProgress();
+
+        // Sanft nach oben zum Beginn des Inhalts scrollen
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      /* ===============================================================
+         5. MODUL 1 INTERAKTIONEN (FDGO-TOGGLES & SPEKTRUM)
+         =============================================================== */
+      function initModule1() {
+        // FDGO Praxis-Toggles
+        document.querySelectorAll('.fdgo-toggle').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const expanded = btn.getAttribute('aria-expanded') === 'true';
+            btn.setAttribute('aria-expanded', String(!expanded));
+            const icon = btn.querySelector('svg');
+            const detail = btn.nextElementSibling;
+            if (detail) detail.classList.toggle('hidden', expanded);
+            if (icon) icon.classList.toggle('rotate-180', !expanded);
+          });
+        });
+
+        // Spektrum-Auswahl
+        const spectrumBtns = document.querySelectorAll('.spectrum-btn');
+        function renderSpectrum(key) {
+          const item = spectrumData[key];
+          const box = document.getElementById('spectrum-detail');
+          if (!item || !box) return;
+
+          spectrumBtns.forEach(b => {
+            const isSel = b.dataset.spectrum === key;
+            b.classList.remove('border-emerald-600', 'bg-emerald-50/80', 'border-amber-500', 'bg-amber-50/80', 'border-rose-600', 'bg-rose-50/80', 'border-slate-200', 'bg-white');
+            if (isSel) {
+              if (key === 'pluralismus') b.classList.add('border-emerald-600', 'bg-emerald-50/80');
+              if (key === 'radikalismus') b.classList.add('border-amber-500', 'bg-amber-50/80');
+              if (key === 'extremismus') b.classList.add('border-rose-600', 'bg-rose-50/80');
+            } else {
+              b.classList.add('border-slate-200', 'bg-white');
+            }
+          });
+
+          box.className = `rounded-xl border p-5 transition-all ${item.borderClass}`;
+          box.innerHTML = `
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+              <h4 class="text-lg font-extrabold text-slate-900">${item.title}</h4>
+              <span class="px-3 py-1 rounded-full text-xs font-bold ${item.badgeClass}">${item.badge}</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-700">
+              <div>
+                <p class="mb-2"><strong class="text-slate-900">Definition:</strong> ${item.definition}</p>
+                <p><strong class="text-slate-900">Beispiele:</strong> ${item.examples}</p>
+              </div>
+              <div class="space-y-2">
+                <div class="bg-white/80 rounded-lg p-3 border border-slate-200">
+                  <strong class="text-slate-900 block text-xs uppercase tracking-wide mb-1">Verhältnis zur FDGO</strong>
+                  <p class="text-xs sm:text-sm">${item.verhaeltnis}</p>
+                </div>
+                <div class="bg-white/80 rounded-lg p-3 border border-slate-200">
+                  <strong class="text-petrol-900 block text-xs uppercase tracking-wide mb-1">Pädagogische Bewertung</strong>
+                  <p class="text-xs sm:text-sm">${item.paedagogik}</p>
+                </div>
+              </div>
+            </div>
+          `;
+        }
+
+        spectrumBtns.forEach(btn => {
+          btn.addEventListener('click', () => renderSpectrum(btn.dataset.spectrum));
+        });
+        renderSpectrum('pluralismus');
+      }
+
+      /* ===============================================================
+         6. MODUL 2 INTERAKTIONEN (PHÄNOMEN-TABS & VERGLEICHSFILTER)
+         =============================================================== */
+      function initModule2() {
+        const phenomTabs = document.querySelectorAll('.phenomenon-tab');
+        const phenomPanels = document.querySelectorAll('.phenomenon-panel');
+
+        phenomTabs.forEach(tab => {
+          tab.addEventListener('click', () => {
+            const key = tab.dataset.phenomenon;
+            phenomTabs.forEach(t => {
+              const active = t.dataset.phenomenon === key;
+              t.setAttribute('aria-selected', String(active));
+              t.classList.remove('bg-amber-700', 'bg-rose-700', 'bg-indigo-700', 'text-white', 'shadow-sm', 'bg-white', 'text-slate-700', 'border', 'border-slate-200');
+              if (active) {
+                const bg = key === 'rechts' ? 'bg-amber-700' : key === 'links' ? 'bg-rose-700' : 'bg-indigo-700';
+                t.classList.add(bg, 'text-white', 'shadow-sm');
+              } else {
+                t.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-200');
+              }
+            });
+
+            phenomPanels.forEach(p => {
+              p.classList.toggle('hidden', p.id !== `phenom-${key}`);
+            });
+          });
+        });
+
+        // Kriterien-Filter für Vergleichstabelle
+        const critSelect = document.getElementById('compare-criterion-filter');
+        if (critSelect) {
+          critSelect.addEventListener('change', () => {
+            const val = critSelect.value;
+            document.querySelectorAll('#comparison-tbody tr').forEach(row => {
+              row.classList.toggle('hidden', val !== 'all' && row.dataset.criterion !== val);
+            });
+          });
+        }
+
+        // Spalten-Toggle für Vergleichstabelle
+        const activeCols = { rechts: true, links: true, islamismus: true };
+        document.querySelectorAll('.col-toggle-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const col = btn.dataset.colToggle;
+            // Verhindern, dass alle 3 Spalten gleichzeitig ausgeblendet werden
+            const activeCount = Object.values(activeCols).filter(Boolean).length;
+            if (activeCols[col] && activeCount === 1) {
+              showToast('Mindestens ein Phänomenbereich bleibt zum Vergleich sichtbar.', 'info');
+              return;
+            }
+            activeCols[col] = !activeCols[col];
+            btn.setAttribute('aria-pressed', String(activeCols[col]));
+
+            const onBg = col === 'rechts' ? 'bg-amber-700' : col === 'links' ? 'bg-rose-700' : 'bg-indigo-700';
+            if (activeCols[col]) {
+              btn.classList.add(onBg, 'text-white');
+              btn.classList.remove('bg-white', 'text-slate-500');
+            } else {
+              btn.classList.remove(onBg, 'text-white');
+              btn.classList.add('bg-white', 'text-slate-500');
+            }
+
+            document.querySelectorAll(`.col-${col}`).forEach(cell => {
+              cell.classList.toggle('hidden', !activeCols[col]);
+            });
+          });
+        });
+      }
+
+      /* ===============================================================
+         7. MODUL 3 INTERAKTIONEN (PUSH/PULL & 4-STUFEN-PROZESS)
+         =============================================================== */
+      function initModule3() {
+        const grid = document.getElementById('push-pull-grid');
+        let currentFilter = 'all';
+
+        function renderPushPull() {
+          if (!grid) return;
+          const filtered = pushPullFactors.filter(f => currentFilter === 'all' || f.type === currentFilter);
+          grid.innerHTML = filtered.map(f => {
+            const isPush = f.type === 'push';
+            const badgeStyle = isPush ? 'bg-rose-100 text-rose-900' : 'bg-indigo-100 text-indigo-900';
+            const borderHover = isPush ? 'hover:border-rose-300' : 'hover:border-indigo-300';
+            return `
+              <article class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 flex flex-col justify-between transition ${borderHover} print-avoid-break">
+                <div>
+                  <div class="flex items-center justify-between gap-2 mb-2.5">
+                    <span class="px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${badgeStyle}">
+                      ${isPush ? 'Push-Faktor (Wegdrücken)' : 'Pull-Faktor (Anziehen)'}
+                    </span>
+                  </div>
+                  <h4 class="font-bold text-slate-900 text-base mb-1.5">${f.title}</h4>
+                  <p class="text-sm text-slate-600 leading-relaxed mb-4">${f.summary}</p>
+                </div>
+
+                <div class="border-t border-slate-100 pt-3">
+                  <button type="button" class="pp-card-toggle w-full flex items-center justify-between text-xs font-bold text-petrol-800 hover:text-petrol-900 py-1 no-print" aria-expanded="false">
+                    <span>Erklärung &amp; Prävention anzeigen</span>
+                    <svg class="w-4 h-4 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                  </button>
+                  <div class="pp-card-detail hidden print:block mt-2.5 space-y-2 text-xs leading-relaxed">
+                    <div class="bg-slate-50 rounded-lg p-2.5 border border-slate-200 text-slate-700">
+                      <strong class="text-slate-900 block mb-0.5">Was steckt dahinter?</strong>
+                      ${f.behind}
+                    </div>
+                    <div class="bg-teal-50 rounded-lg p-2.5 border border-teal-200 text-teal-950">
+                      <strong class="text-teal-900 block mb-0.5">Präventive Rolle von Erzieher*innen:</strong>
+                      ${f.prevention}
+                    </div>
+                  </div>
+                </div>
+              </article>
+            `;
+          }).join('');
+
+          grid.querySelectorAll('.pp-card-toggle').forEach(btn => {
+            btn.addEventListener('click', () => {
+              const exp = btn.getAttribute('aria-expanded') === 'true';
+              btn.setAttribute('aria-expanded', String(!exp));
+              const icon = btn.querySelector('svg');
+              const detail = btn.nextElementSibling;
+              if (detail) detail.classList.toggle('hidden', exp);
+              if (icon) icon.classList.toggle('rotate-180', !exp);
+            });
+          });
+        }
+
+        document.querySelectorAll('.pp-filter-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            currentFilter = btn.dataset.ppFilter;
+            document.querySelectorAll('.pp-filter-btn').forEach(b => {
+              const act = b.dataset.ppFilter === currentFilter;
+              b.className = act
+                ? 'pp-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-petrol-900 text-white transition'
+                : 'pp-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-slate-100 transition';
+            });
+            renderPushPull();
+          });
+        });
+        renderPushPull();
+
+        // 4-Stufen-Prozess
+        const stageBtns = document.querySelectorAll('.stage-btn');
+        function renderStage(stageNum) {
+          const data = radicalizationStages[stageNum];
+          const box = document.getElementById('stage-detail-box');
+          if (!data || !box) return;
+
+          stageBtns.forEach(b => {
+            const act = Number(b.dataset.stage) === Number(stageNum);
+            b.setAttribute('aria-selected', String(act));
+            b.className = act
+              ? 'stage-btn p-4 rounded-xl border-2 border-petrol-700 bg-petrol-50 text-left transition shadow-sm'
+              : 'stage-btn p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-petrol-300 text-left transition';
+          });
+
+          box.innerHTML = `
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+              <h4 class="text-lg font-extrabold ${data.color}">${data.title}</h4>
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700">${data.badge}</span>
+            </div>
+            <p class="text-sm text-slate-700 leading-relaxed mb-4">
+              <strong class="text-slate-900">Psychologische &amp; soziale Dynamik:</strong> ${data.dynamics}
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs sm:text-sm">
+              <div class="bg-white rounded-xl p-4 border border-slate-200">
+                <strong class="text-petrol-900 block mb-1">Frühwarnzeichen: Kita &amp; Hort</strong>
+                <p class="text-slate-700 leading-relaxed">${data.signsKitaHort}</p>
+              </div>
+              <div class="bg-white rounded-xl p-4 border border-slate-200">
+                <strong class="text-amber-900 block mb-1">Frühwarnzeichen: Schule &amp; Jugendhilfe</strong>
+                <p class="text-slate-700 leading-relaxed">${data.signsJugend}</p>
+              </div>
+              <div class="bg-teal-50/90 rounded-xl p-4 border border-teal-200">
+                <strong class="text-teal-950 block mb-1">Pädagogisches Handeln</strong>
+                <p class="text-teal-900 leading-relaxed">${data.action}</p>
+              </div>
+            </div>
+          `;
+        }
+
+        stageBtns.forEach(btn => {
+          btn.addEventListener('click', () => renderStage(btn.dataset.stage));
+        });
+        renderStage(1);
+      }
+
+      /* ===============================================================
+         8. MODUL 4 INTERAKTIONEN (PRAXIS-SIMULATOR)
+         =============================================================== */
+      function renderSimulator() {
+        const selectorBar = document.getElementById('case-selector-bar');
+        const stage = document.getElementById('case-stage');
+        if (!selectorBar || !stage) return;
+
+        // Fall-Auswahlkarten rendern
+        selectorBar.innerHTML = simulatorCases.map(c => {
+          const isActive = c.id === state.activeCaseId;
+          const isSolved = Boolean(state.solvedCases[c.id]);
+          const chosenKey = state.solvedCases[c.id];
+          const chosenOpt = c.options.find(o => o.key === chosenKey);
+          const isBest = chosenOpt && chosenOpt.rating === 'professionell';
+
+          return `
+            <button type="button" role="tab" aria-selected="${isActive}" data-case-id="${c.id}"
+              class="case-select-btn text-left p-4 rounded-2xl border-2 transition flex flex-col justify-between min-h-[86px] ${
+                isActive
+                  ? 'border-petrol-800 bg-petrol-50 shadow-sm'
+                  : 'border-slate-200 bg-white hover:border-petrol-300'
+              }">
+              <div class="flex items-center justify-between gap-2 w-full mb-1">
+                <span class="text-xs font-bold text-slate-500">${c.setting}</span>
+                ${
+                  isSolved
+                    ? `<span class="text-xs font-bold px-2 py-0.5 rounded-full ${isBest ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}">${isBest ? '✓ Gelöst' : 'Bearbeitet'}</span>`
+                    : `<span class="text-xs font-semibold text-slate-400">Offen</span>`
+                }
+              </div>
+              <div class="font-bold text-sm text-slate-900">${c.shortTitle}</div>
+            </button>
+          `;
+        }).join('');
+
+        selectorBar.querySelectorAll('.case-select-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            state.activeCaseId = btn.dataset.caseId;
+            saveState();
+            renderSimulator();
+          });
+        });
+
+        // Aktiven Fall rendern
+        const current = simulatorCases.find(c => c.id === state.activeCaseId) || simulatorCases[0];
+        const selectedKey = state.solvedCases[current.id];
+        const selectedOption = current.options.find(o => o.key === selectedKey);
+
+        let feedbackHtml = '';
+        if (selectedOption) {
+          let fbBoxClass = 'bg-emerald-50 border-emerald-300 text-emerald-950';
+          let fbBadgeClass = 'bg-emerald-700 text-white';
+          if (selectedOption.rating === 'verbesserungsfaehig') {
+            fbBoxClass = 'bg-amber-50 border-amber-300 text-amber-950';
+            fbBadgeClass = 'bg-amber-600 text-white';
+          } else if (selectedOption.rating === 'problematisch') {
+            fbBoxClass = 'bg-rose-50 border-rose-300 text-rose-950';
+            fbBadgeClass = 'bg-rose-700 text-white';
+          }
+
+          feedbackHtml = `
+            <div class="rounded-2xl border-2 p-5 space-y-2.5 animate-fade-in ${fbBoxClass}">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <span class="px-3 py-1 rounded-full text-xs font-bold ${fbBadgeClass}">
+                  Bewertung Option ${selectedOption.key}: ${selectedOption.ratingLabel}
+                </span>
+                <span class="text-xs font-semibold opacity-80">Sie können zum Vergleich auch die anderen Optionen anklicken.</span>
+              </div>
+              <p class="text-sm leading-relaxed font-medium">${selectedOption.feedback}</p>
+            </div>
+          `;
+        }
+
+        stage.innerHTML = `
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-4">
+            <div>
+              <div class="flex flex-wrap items-center gap-2 mb-1">
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full ${current.categoryColor}">${current.category}</span>
+                <span class="text-xs font-semibold text-slate-500">${current.setting}</span>
+              </div>
+              <h3 class="text-xl font-extrabold text-slate-900">${current.title}</h3>
+            </div>
+          </div>
+
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
+            <div class="text-xs font-bold uppercase tracking-wider text-petrol-800 mb-1.5">Praxissituation</div>
+            <p class="text-sm sm:text-base text-slate-800 leading-relaxed">${current.scenario}</p>
+          </div>
+
+          <div class="space-y-3">
+            <div class="text-sm font-bold text-slate-900">Wie reagieren Sie? Wählen Sie eine Handlungsoption:</div>
+            <div class="grid grid-cols-1 gap-3">
+              ${current.options.map(opt => {
+                const isChosen = selectedKey === opt.key;
+                let borderStyle = 'border-slate-200 bg-white hover:border-petrol-400 hover:bg-petrol-50/40';
+                if (isChosen) {
+                  if (opt.rating === 'professionell') borderStyle = 'border-emerald-600 bg-emerald-50/60 ring-1 ring-emerald-500';
+                  else if (opt.rating === 'verbesserungsfaehig') borderStyle = 'border-amber-500 bg-amber-50/60 ring-1 ring-amber-400';
+                  else borderStyle = 'border-rose-600 bg-rose-50/60 ring-1 ring-rose-500';
+                }
+                return `
+                  <button type="button" data-opt-key="${opt.key}"
+                    class="case-option-btn w-full text-left p-4 rounded-xl border-2 transition flex items-start gap-3.5 ${borderStyle}">
+                    <span class="w-8 h-8 rounded-lg shrink-0 flex items-center justify-center font-extrabold text-sm ${
+                      isChosen ? 'bg-petrol-900 text-white' : 'bg-slate-100 text-slate-700'
+                    }">${opt.key}</span>
+                    <div>
+                      <div class="font-bold text-sm sm:text-base text-slate-900 mb-0.5">${opt.label}</div>
+                      <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">${opt.text}</p>
+                    </div>
+                  </button>
+                `;
+              }).join('')}
+            </div>
+          </div>
+
+          ${feedbackHtml}
+        `;
+
+        stage.querySelectorAll('.case-option-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const key = btn.dataset.optKey;
+            const firstTime = !state.solvedCases[current.id];
+            state.solvedCases[current.id] = key;
+            renderSimulator();
+            updateGlobalProgress();
+            if (firstTime) {
+              showToast(`${current.shortTitle} bearbeitet!`, 'success');
+            }
+          });
+        });
+      }
+
+      /* ===============================================================
+         9. MODUL 5 INTERAKTIONEN (ZUORDNUNG & MULTIPLE-CHOICE-QUIZ)
+         =============================================================== */
+      const sortingCategories = [
+        { key: 'rechts', label: 'Rechtsextremismus', activeClass: 'bg-amber-700 text-white border-amber-700' },
+        { key: 'links', label: 'Linksextremismus', activeClass: 'bg-rose-700 text-white border-rose-700' },
+        { key: 'islamismus', label: 'Islamismus', activeClass: 'bg-indigo-700 text-white border-indigo-700' },
+        { key: 'demokratisch', label: 'Demokratisch / Nicht extrem.', activeClass: 'bg-emerald-700 text-white border-emerald-700' }
+      ];
+
+      function renderSortingExercise() {
+        const container = document.getElementById('sorting-container');
+        if (!container) return;
+
+        container.innerHTML = sortingItems.map((item, idx) => {
+          const userAnswer = state.sortingAnswers[item.id];
+          const isAnswered = Boolean(userAnswer);
+          const isCorrect = userAnswer === item.correct;
+
+          let cardBorder = 'border-slate-200';
+          if (isAnswered) {
+            cardBorder = isCorrect ? 'border-emerald-400 bg-emerald-50/30' : 'border-rose-300 bg-rose-50/30';
+          }
+
+          return `
+            <article class="rounded-2xl border-2 p-4 flex flex-col justify-between gap-3 bg-white transition ${cardBorder} print-avoid-break">
+              <div>
+                <div class="flex items-center justify-between text-xs font-bold text-slate-500 mb-2">
+                  <span>Aussage ${idx + 1} von 9</span>
+                  ${isAnswered ? `<span class="${isCorrect ? 'text-emerald-700' : 'text-rose-700'}">${isCorrect ? '✓ Richtig' : '✖ Nicht ganz'}</span>` : ''}
+                </div>
+                <p class="text-sm font-medium text-slate-900 leading-relaxed">${item.statement}</p>
+              </div>
+
+              <div class="space-y-2">
+                <div class="grid grid-cols-2 gap-1.5 no-print">
+                  ${sortingCategories.map(cat => {
+                    const selected = userAnswer === cat.key;
+                    let btnStyle = 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100';
+                    if (selected) {
+                      btnStyle = isCorrect
+                        ? 'bg-emerald-700 text-white border-emerald-700'
+                        : 'bg-rose-700 text-white border-rose-700';
+                    } else if (isAnswered && cat.key === item.correct) {
+                      btnStyle = 'bg-emerald-100 text-emerald-900 border-emerald-400 font-bold';
+                    }
+                    return `
+                      <button type="button" data-sort-id="${item.id}" data-sort-cat="${cat.key}"
+                        class="sort-choice-btn px-2.5 py-2 rounded-lg border text-xs font-semibold transition text-center leading-tight min-h-[38px] ${btnStyle}">
+                        ${cat.label}
+                      </button>
+                    `;
+                  }).join('')}
+                </div>
+
+                ${
+                  isAnswered
+                    ? `<div class="text-xs p-2.5 rounded-lg border ${isCorrect ? 'bg-emerald-50 border-emerald-200 text-emerald-900' : 'bg-rose-50 border-rose-200 text-rose-900'} leading-relaxed">
+                        ${item.explanation}
+                       </div>`
+                    : ''
+                }
+              </div>
+            </article>
+          `;
+        }).join('');
+
+        container.querySelectorAll('.sort-choice-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const id = btn.dataset.sortId;
+            const cat = btn.dataset.sortCat;
+            state.sortingAnswers[id] = cat;
+            renderSortingExercise();
+            updateGlobalProgress();
+          });
+        });
+      }
+
+      function renderQuiz() {
+        const container = document.getElementById('quiz-container');
+        const banner = document.getElementById('quiz-result-banner');
+        if (!container) return;
+
+        container.innerHTML = quizQuestions.map((q, idx) => {
+          const userChoice = state.quizAnswers[q.id];
+          const answered = userChoice !== undefined;
+          const isCorrect = userChoice === q.correct;
+
+          return `
+            <article class="rounded-2xl border border-slate-200 bg-slate-50/50 p-5 space-y-3 print-avoid-break">
+              <div class="flex items-start justify-between gap-3">
+                <h4 class="font-bold text-slate-900 text-sm sm:text-base">
+                  <span class="text-petrol-800 mr-1.5">Frage ${idx + 1}:</span>${q.question}
+                </h4>
+                ${
+                  answered
+                    ? `<span class="shrink-0 text-xs font-bold px-2.5 py-1 rounded-full ${isCorrect ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">
+                        ${isCorrect ? '✓ Richtig' : '✖ Falsch'}
+                       </span>`
+                    : ''
+                }
+              </div>
+
+              <div class="grid grid-cols-1 gap-2">
+                ${q.options.map((optText, oIdx) => {
+                  const chosen = userChoice === oIdx;
+                  let style = 'bg-white border-slate-200 text-slate-800 hover:border-petrol-400 hover:bg-petrol-50/40';
+                  if (answered) {
+                    if (oIdx === q.correct) {
+                      style = 'bg-emerald-50 border-emerald-500 text-emerald-950 font-semibold';
+                    } else if (chosen && oIdx !== q.correct) {
+                      style = 'bg-rose-50 border-rose-500 text-rose-950';
+                    } else {
+                      style = 'bg-white/70 border-slate-200 text-slate-500';
+                    }
+                  }
+                  const letter = String.fromCharCode(65 + oIdx);
+                  return `
+                    <button type="button" data-q-id="${q.id}" data-o-idx="${oIdx}"
+                      class="quiz-opt-btn w-full text-left px-4 py-3 rounded-xl border-2 text-xs sm:text-sm transition flex items-center gap-3 min-h-[44px] ${style}">
+                      <span class="w-6 h-6 rounded-md shrink-0 flex items-center justify-center font-bold text-xs ${
+                        answered && oIdx === q.correct
+                          ? 'bg-emerald-600 text-white'
+                          : answered && chosen
+                            ? 'bg-rose-600 text-white'
+                            : 'bg-slate-100 text-slate-700'
+                      }">${letter}</span>
+                      <span>${optText}</span>
+                    </button>
+                  `;
+                }).join('')}
+              </div>
+
+              ${
+                answered
+                  ? `<div class="text-xs sm:text-sm p-3.5 rounded-xl border ${
+                      isCorrect ? 'bg-emerald-50 border-emerald-200 text-emerald-950' : 'bg-amber-50 border-amber-200 text-amber-950'
+                    } leading-relaxed animate-fade-in">
+                      <strong>Erklärung:</strong> ${q.explanation}
+                    </div>`
+                  : ''
+              }
+            </article>
+          `;
+        }).join('');
+
+        container.querySelectorAll('.quiz-opt-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const qId = btn.dataset.qId;
+            const oIdx = Number(btn.dataset.oIdx);
+            state.quizAnswers[qId] = oIdx;
+            renderQuiz();
+            updateGlobalProgress();
+          });
+        });
+
+        // Gesamtauswertung anzeigen, wenn alle 8 Fragen beantwortet
+        const answeredCount = Object.keys(state.quizAnswers).length;
+        if (banner) {
+          if (answeredCount === quizQuestions.length) {
+            let score = 0;
+            quizQuestions.forEach(q => {
+              if (state.quizAnswers[q.id] === q.correct) score++;
+            });
+
+            let title = '';
+            let msg = '';
+            let style = '';
+            if (score >= 7) {
+              title = `Ausgezeichnet! ${score} von 8 Punkten erreicht`;
+              msg = 'Sie verfügen über ein sehr fundiertes politisches und pädagogisches Fachwissen zu FDGO, Extremismusformen, Beutelsbacher Konsens und professionellem Handeln.';
+              style = 'bg-emerald-50 border-emerald-400 text-emerald-950';
+            } else if (score >= 5) {
+              title = `Gute Leistung! ${score} von 8 Punkten erreicht`;
+              msg = 'Die Grundlagen sitzen bereits gut. Schauen Sie sich die markierten Erklärungen bei den verfehlten Fragen kurz an, um letzte Unsicherheiten zu schließen.';
+              style = 'bg-petrol-50 border-petrol-400 text-petrol-950';
+            } else {
+              title = `${score} von 8 Punkten erreicht – Übung macht sicher`;
+              msg = 'Nutzen Sie die Module 1 bis 4 zur gezielten Wiederholung (insbesondere FDGO, Abgrenzung Islam/Islamismus und Neutralitätsgebot) und starten Sie das Quiz danach erneut.';
+              style = 'bg-amber-50 border-amber-400 text-amber-950';
+            }
+
+            banner.className = `rounded-2xl p-6 border-2 space-y-2 animate-fade-in ${style}`;
+            banner.innerHTML = `
+              <h4 class="text-lg font-extrabold">${title}</h4>
+              <p class="text-sm leading-relaxed">${msg}</p>
+            `;
+            banner.classList.remove('hidden');
+          } else {
+            banner.classList.add('hidden');
+          }
+        }
+      }
+
+      /* ===============================================================
+         10. MODUL 6 INTERAKTIONEN (CHECKLISTE & BERATUNGSFILTER)
+         =============================================================== */
+      function renderChecklist() {
+        const container = document.getElementById('checklist-container');
+        if (!container) return;
+
+        container.innerHTML = emergencySteps.map(step => {
+          const checked = Boolean(state.checkedSteps[step.id]);
+          return `
+            <label class="flex items-start gap-3.5 p-4 rounded-xl border-2 cursor-pointer transition ${
+              checked ? 'border-emerald-400 bg-emerald-50/50' : 'border-slate-200 bg-slate-50/50 hover:border-petrol-300'
+            }">
+              <input type="checkbox" data-step-id="${step.id}" ${checked ? 'checked' : ''}
+                class="step-checkbox mt-1 w-5 h-5 rounded border-slate-300 text-petrol-800 focus:ring-petrol-700 shrink-0 cursor-pointer" />
+              <div class="flex-1">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="text-xs font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-md ${checked ? 'bg-emerald-700 text-white' : 'bg-petrol-100 text-petrol-900'}">${step.num}</span>
+                  <span class="font-bold text-sm sm:text-base ${checked ? 'text-emerald-950' : 'text-slate-900'}">${step.title}</span>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">${step.detail}</p>
+              </div>
+            </label>
+          `;
+        }).join('');
+
+        container.querySelectorAll('.step-checkbox').forEach(cb => {
+          cb.addEventListener('change', () => {
+            state.checkedSteps[cb.dataset.stepId] = cb.checked;
+            renderChecklist();
+            updateGlobalProgress();
+          });
+        });
+      }
+
+      let activeNetFilter = 'all';
+      function renderNetwork() {
+        const grid = document.getElementById('network-grid');
+        if (!grid) return;
+
+        const filtered = networkContacts.filter(item =>
+          activeNetFilter === 'all' || item.categories.includes(activeNetFilter)
+        );
+
+        grid.innerHTML = filtered.map(item => `
+          <article class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 flex flex-col justify-between gap-3 hover:border-petrol-300 transition print-avoid-break">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                <span class="px-2.5 py-1 rounded-full text-xs font-bold ${item.badgeClass}">${item.badge}</span>
+                <span class="text-xs font-semibold text-emerald-700">Kostenfrei &amp; vertraulich</span>
+              </div>
+              <h4 class="font-bold text-slate-900 text-base mb-1.5">${item.name}</h4>
+              <p class="text-sm text-slate-600 leading-relaxed">${item.desc}</p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 space-y-1 text-xs">
+              <div class="text-slate-600"><strong class="text-slate-800">Zielgruppe:</strong> ${item.target}</div>
+              <div class="text-petrol-900 font-semibold break-words">${item.contact}</div>
+            </div>
+          </article>
+        `).join('');
+      }
+
+      function initModule6() {
+        renderChecklist();
+        renderNetwork();
+
+        document.querySelectorAll('.net-filter-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            activeNetFilter = btn.dataset.netFilter;
+            document.querySelectorAll('.net-filter-btn').forEach(b => {
+              const act = b.dataset.netFilter === activeNetFilter;
+              b.className = act
+                ? 'net-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-petrol-900 text-white transition min-h-[40px]'
+                : 'net-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-slate-100 transition min-h-[40px]';
+            });
+            renderNetwork();
+          });
+        });
+      }
+
+      /* ===============================================================
+         11. INITIALISIERUNG & GLOBALE EVENT-LISTENER
+         =============================================================== */
+      function initApp() {
+        loadState();
+
+        // Top-Modul-Tabs
+        document.querySelectorAll('.module-tab').forEach(tab => {
+          tab.addEventListener('click', () => switchModule(tab.dataset.module, false));
+        });
+
+        // Vor / Zurück-Buttons in den Modulen
+        document.querySelectorAll('.btn-next-mod').forEach(btn => {
+          btn.addEventListener('click', () => switchModule(btn.dataset.nextModule, true));
+        });
+        document.querySelectorAll('.btn-prev-mod').forEach(btn => {
+          btn.addEventListener('click', () => switchModule(btn.dataset.prevModule, false));
+        });
+
+        // Modul 6 Abschluss & Druck
+        const btnCompleteCourse = document.getElementById('btn-complete-course');
+        if (btnCompleteCourse) {
+          btnCompleteCourse.addEventListener('click', () => {
+            if (!state.completedModules.includes(6)) {
+              state.completedModules.push(6);
+            }
+            updateGlobalProgress();
+            showToast('Modul 6 abgeschlossen! Druckansicht wird geöffnet …', 'success');
+            setTimeout(() => window.print(), 450);
+          });
+        }
+
+        // Druck-Button im Header
+        const btnPrint = document.getElementById('btn-print');
+        if (btnPrint) {
+          btnPrint.addEventListener('click', () => {
+            updateGlobalProgress();
+            window.print();
+          });
+        }
+
+        // Reset-Buttons in Modul 5
+        const btnResetSorting = document.getElementById('btn-reset-sorting');
+        if (btnResetSorting) {
+          btnResetSorting.addEventListener('click', () => {
+            state.sortingAnswers = {};
+            renderSortingExercise();
+            updateGlobalProgress();
+            showToast('Zuordnungsübung wurde zurückgesetzt.', 'info');
+          });
+        }
+
+        const btnResetQuiz = document.getElementById('btn-reset-quiz');
+        if (btnResetQuiz) {
+          btnResetQuiz.addEventListener('click', () => {
+            state.quizAnswers = {};
+            renderQuiz();
+            updateGlobalProgress();
+            showToast('Multiple-Choice-Quiz wurde neu gestartet.', 'info');
+          });
+        }
+
+        // Reset-Modal (ohne browserseitiges confirm())
+        const modal = document.getElementById('reset-modal');
+        const btnOpenReset = document.getElementById('btn-open-reset');
+        const btnCancelReset = document.getElementById('btn-cancel-reset');
+        const btnConfirmReset = document.getElementById('btn-confirm-reset');
+
+        function toggleResetModal(open) {
+          if (!modal) return;
+          modal.classList.toggle('hidden', !open);
+          modal.classList.toggle('flex', open);
+        }
+
+        if (btnOpenReset) btnOpenReset.addEventListener('click', () => toggleResetModal(true));
+        if (btnCancelReset) btnCancelReset.addEventListener('click', () => toggleResetModal(false));
+        if (modal) {
+          modal.addEventListener('click', (e) => {
+            if (e.target === modal) toggleResetModal(false);
+          });
+        }
+        if (btnConfirmReset) {
+          btnConfirmReset.addEventListener('click', () => {
+            state = getInitialState();
+            saveState();
+            toggleResetModal(false);
+            switchModule(1, false);
+            renderSimulator();
+            renderSortingExercise();
+            renderQuiz();
+            renderChecklist();
+            updateGlobalProgress();
+            showToast('Gesamter Lernfortschritt wurde zurückgesetzt.', 'info');
+          });
+        }
+
+        // Module initialisieren
+        initModule1();
+        initModule2();
+        initModule3();
+        renderSimulator();
+        renderSortingExercise();
+        renderQuiz();
+        initModule6();
+
+        // Gespeichertes Modul aktivieren
+        switchModule(state.activeModule, false);
+      }
+
+      document.addEventListener('DOMContentLoaded', initApp);
+    })();
+  </script>
+</body>
+</html>
